@@ -1,0 +1,67 @@
+@import "../../../../ui/styles/vars";
+
+.contact__group {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.contact__group:hover {
+  background-color: @color_bluealeez;
+}
+
+.contact_group__wrapper {
+  padding: 14px 0;
+  display: flex;
+  border-top: 1px solid @color_gray;
+}
+
+.contact__avatar {
+  width: 47px;
+}
+
+.contact__center {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.contact__center_name {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 13px;
+  margin-bottom: 4px;
+}
+
+.contact__center_message {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: @color_shadow;
+}
+
+.contact__right {
+  padding-left: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .chip {
+    display: inline-block;
+    padding: 4px;
+    font-size: 11px;
+    line-height: 12px;
+    color: @color_white;
+    background-color: @color_blue;
+    border-radius: @radius_large;
+    text-align: center;
+    min-width: 20px;
+  }
+}
+
+.contact__right_time {
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 13px;
+  color: @color_shadow;
+}

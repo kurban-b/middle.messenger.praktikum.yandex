@@ -1,0 +1,37 @@
+<div class="messages_group">
+  <div class="messages__contacts">
+    <div class="messages__contacts__top">
+      <div class="btn-block">
+        <button class="btn-block_item" onclick="_handleLocation('profile')">
+          <span>Профиль</span>
+
+          <img src="{{icon}}" alt="">
+        </button>
+      </div>
+
+      {{>Spacing size="medium"}}
+
+      <div class="search">
+        <label>
+          <input class="search__input" type="text" placeholder="Поиск">
+        </label>
+      </div>
+    </div>
+
+    <div class="messages__contacts_list">
+      {{#each contacts}}
+        {{> Contacts
+             name=name
+             lastMessage=lastMessage
+             time=time
+             newCount=newCount
+        }}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="messages__chat">
+    {{>Chat}}
+
+  </div>
+</div>

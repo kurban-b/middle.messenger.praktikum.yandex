@@ -1,0 +1,37 @@
+@import "../../../../ui/styles/vars";
+
+.prof-input_group {
+  padding: 10px 0;
+  border-bottom: 1px solid @color_gray;
+
+  label {
+    display: flex;
+
+    .prof-input_name {
+      margin-right: 20px;
+      font-size: 13px;
+      line-height: 13px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .prof-input_item {
+      flex: 1;
+
+      input {
+        width: 100%;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 13px;
+        text-align: right;
+        color: #999999;
+        outline: none;
+        border: none;
+      }
+
+      input[disabled] {
+        background-color: transparent;
+      }
+    }
+  }
+}

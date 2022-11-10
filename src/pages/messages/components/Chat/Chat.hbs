@@ -1,0 +1,31 @@
+<div class="chat__group">
+  <div class="chat_top">
+    <div class="chat_top__avatar" onclick="_handleLocation('profile')">
+      {{>Avatar size="small"}}
+    </div>
+
+    <div class="chat_top__name">
+      {{name}}
+    </div>
+
+    <div class="chat_top__menu">
+      <img class="icon" src="{{icon}}" alt="" />
+    </div>
+  </div>
+
+  <div class="chat_messages">
+    <div class="chat_messages__date">
+      19 июня
+    </div>
+
+    <ul class="chat_messages__list">
+      {{#each messages}}
+        {{>Message type=type text=text date=date isOutgoing=isOutgoing}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="chat__bottom">
+     {{>InputBar}}
+  </div>
+</div>

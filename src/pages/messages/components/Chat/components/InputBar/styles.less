@@ -1,0 +1,39 @@
+@import "../../../../../../ui/styles/vars";
+
+.input_bar__group {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    height: 100%;
+    background-color: transparent;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .input_bar__input {
+    flex: 1;
+    padding: 0 10px;
+
+    input {
+      width: 100%;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 12px;
+      color: @color_black;
+      border-radius: 30px;
+      border: none;
+      background-color: @color_gray;
+    }
+
+    input::placeholder {
+      color: @color_shadow;
+    }
+  }
+}
