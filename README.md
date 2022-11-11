@@ -13,3 +13,5 @@
 https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
 
 ### Проект выложен на Netlify, ссылка внизу
+
+https://magenta-syrniki-f870ee.netlify.app/
