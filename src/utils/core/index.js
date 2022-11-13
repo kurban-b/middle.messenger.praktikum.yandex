@@ -13,6 +13,8 @@ import Message from "../../pages/messages/components/Chat/components/Message";
 import InputBar from "../../pages/messages/components/Chat/components/InputBar";
 import ProfAvatar from "../../pages/profile/components/ProfAvatar";
 import ProfInput from "../../pages/profile/components/ProfInput";
+import Navigation from "../../ui/components/Navigation";
+import page404 from "../../pages/page404";
 
 //** Регистрирует паршилы для hbs */
 export const handlebarsRegisterPartial = () => {
@@ -26,18 +28,30 @@ export const handlebarsRegisterPartial = () => {
     Handlebars.registerPartial('InputBar', InputBar)
     Handlebars.registerPartial('ProfAvatar', ProfAvatar)
     Handlebars.registerPartial('ProfInput', ProfInput)
+    Handlebars.registerPartial('Navigation', Navigation)
 }
 
 //** Временная функция для примитивного роутинга */
 export const initRouter = (root) => {
-  const PAGES = {
-    profile: profile,
-    login: login,
-    registration: registration,
-    messages: messages
-  }
+    window._handleLocation = (href) => {
+        window.location.href = href
+    }
 
-  window._handleLocation = (page) => {
-    root.innerHTML = PAGES[page]()
-  }
+    switch (window.location.pathname) {
+        case '/':
+            return login();
+
+        case '/registration':
+            return registration();
+
+        case '/chat':
+            return messages();
+
+        case '/profile':
+            return profile();
+
+        default :
+            return page404()
+
+    }
 }

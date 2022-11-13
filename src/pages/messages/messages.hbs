@@ -1,8 +1,10 @@
-<div class="messages_group">
+{{>Navigation }}
+
+<main class="messages_group">
   <div class="messages__contacts">
     <div class="messages__contacts__top">
       <div class="btn-block">
-        <button class="btn-block_item" onclick="_handleLocation('profile')">
+        <button class="btn-block_item" onclick="_handleLocation('/profile')">
           <span>Профиль</span>
 
           <img src="{{icon}}" alt="">
@@ -32,6 +34,5 @@
 
   <div class="messages__chat">
     {{>Chat}}
-
   </div>
-</div>
+</main>

@@ -1,43 +1,47 @@
 <div class="auth-page">
-    <div class="auth-page__box">
+    {{>Navigation }}
+
+    <main class="auth-page__box">
         <h1>
             {{title}}
         </h1>
 
-        {{>TextField name=emailName label=emailLabel}}
+        <form>
+            {{>TextField name=emailName label=emailLabel}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField name=loginName label=loginLabel required="required"}}
+            {{>TextField name=loginName label=loginLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField name=firstNameName label=firstNameLabel required="required"}}
+            {{>TextField name=firstNameName label=firstNameLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField name=secondNameName label=secondNameLabel required="required"}}
+            {{>TextField name=secondNameName label=secondNameLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField type="number" name=phoneName label=phoneLabel required="required"}}
+            {{>TextField type="number" name=phoneName label=phoneLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField type="password" name=passwordName label=passwordLabel required="required"}}
+            {{>TextField type="password" name=passwordName label=passwordLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField type="password" name=repeatPasswordName label=repeatPasswordLabel required="required"}}
+            {{>TextField type="password" name=repeatPasswordName label=repeatPasswordLabel required="required"}}
 
-        {{>Spacing size="ularge"}}
+            {{>Spacing size="ularge"}}
 
-        {{>Spacing size="xxlarge"}}
+            {{>Spacing size="xxlarge"}}
+        </form>
 
-        {{>Button name=regText block="true" onClick="_handleLocation('messages')"}}
+        {{>Button name=regText block="true" onClick="_handleLocation('/chat')"}}
 
         {{>Spacing size="xxsmall"}}
 
-        {{>Button name=authText block="true" view="link" onClick="_handleLocation('login')"}}
-    </div>
+        {{>Button name=authText block="true" view="link" onClick="_handleLocation('/login')"}}
+    </main>
 </div>

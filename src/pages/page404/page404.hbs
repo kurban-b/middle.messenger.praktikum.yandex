@@ -1,4 +1,6 @@
-<div class="page404">
+{{>Navigation }}
+
+<main class="page404">
     <h1>
         404
     </h1>
@@ -11,5 +13,5 @@
 
     {{> Spacing size="xxlarge"}}
 
-    {{> Button name="Назад к чатам" view="link" onClick="_handleLocation('messages')"}}
-</div>
+    {{> Button name="Назад к чатам" view="link" onClick="_handleLocation('/chat')"}}
+</main>

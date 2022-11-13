@@ -1,23 +1,27 @@
 <div class="login-page">
-    <div class="login-page__box">
+    {{>Navigation }}
+
+    <main class="login-page__box">
         <h1>
             {{title}}
         </h1>
 
-        {{>TextField name=loginName label=loginLabel required="required"}}
+        <form>
+            {{>TextField name=loginName label=loginLabel required="required"}}
 
-        {{>Spacing size="small"}}
+            {{>Spacing size="small"}}
 
-        {{>TextField name=passwordName label=passwordLabel required="required"}}
+            {{>TextField name=passwordName label=passwordLabel required="required"}}
 
-        {{>Spacing size="ularge"}}
+            {{>Spacing size="ularge"}}
 
-        {{>Spacing size="xxlarge"}}
+            {{>Spacing size="xxlarge"}}
+        </form>
 
-        {{>Button name=authText block="true" onClick="_handleLocation('messages')"}}
+        {{>Button name=authText block="true" onClik="_handleLocation('/chat')"}}
 
         {{>Spacing size="xxsmall"}}
 
-        {{>Button name=regText block="true" view="link" onClick="_handleLocation('registration')"}}
-    </div>
+        {{>Button name=regText block="true" view="link" onClick="_handleLocation('/registration')"}}
+    </main>
 </div>

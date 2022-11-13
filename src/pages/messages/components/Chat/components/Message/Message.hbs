@@ -1,7 +1,7 @@
 {{#if isOutgoing}}
   {{#if image}}
     <li class="chat_message_img chat_message_img__outgoing">
-      <img src="{{image}}" alt="">
+      <img src="{{image}}" alt={{image}}>
 
       <div class="chat_message__date">
         {{date}}
@@ -21,7 +21,7 @@
 {{else}}
   {{#if image}}
     <li class="chat_message_img">
-      <img src="{{image}}" alt="">
+      <img src="{{image}}" alt={{image}}>
 
       <div class="chat_message__date">
         {{date}}
