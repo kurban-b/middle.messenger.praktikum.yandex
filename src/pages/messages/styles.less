@@ -1,0 +1,59 @@
+@import "../../ui/styles/vars";
+
+
+.messages_group {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  .messages__contacts {
+    width: 310px;
+    height: 100%;
+    background-color: @color_graylight;
+    border-right: 1px solid #EAEAEA;
+  }
+
+  .messages__chat {
+    flex: 1;
+    height: 100%;
+  }
+
+  .messages__contacts__top {
+    padding: 20px 10px 14px 10px;
+  }
+
+  .btn-block {
+    text-align: right;
+  }
+
+  .btn-block_item {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    line-height: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    span {
+      color: @color_shadow;
+      display: inline-block;
+      margin-right: 5px;
+    }
+  }
+
+  .search__input {
+    width: 100%;
+    padding: 10px;
+    background-color: @color_gray;
+    border: none;
+    border-radius: @radius_small;
+  }
+
+  .search__input::placeholder {
+    text-align: center;
+  }
+
+}

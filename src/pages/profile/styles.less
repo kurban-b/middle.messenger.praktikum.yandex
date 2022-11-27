@@ -1,0 +1,77 @@
+@import "../../ui/styles/vars";
+
+.profile_group {
+  position: relative;
+  height: 100%;
+
+  .profile_side_line {
+    cursor: pointer;
+    padding: 18px;
+    background-color: @color_gray;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-right: 1px solid #EAEAEA;
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .profile_info {
+    width: 510px;
+    margin: auto;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile_name {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+      margin: 20px 0 60px 0;
+    }
+
+    .profile_inputs {
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    .profile_submit {
+      width: 280px;
+      margin: auto;
+    }
+
+    .profile__buttons {
+      width: 100%;
+
+      .profile__buttons_item {
+        padding: 10px 0;
+      }
+
+      .line {
+        border-bottom: 1px solid @color_gray;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: @color_blue;
+        font-size: 13px;
+        line-height: 13px;
+      }
+
+      .red button {
+        color: @color_red
+      }
+    }
+  }
+}

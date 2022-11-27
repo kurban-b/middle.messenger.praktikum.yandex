@@ -1,0 +1,50 @@
+@import "../../../../ui/styles/vars";
+
+.profile_avatar {
+  width: 130px;
+  height: 130px;
+  background-color: @color_gray;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .profile_avatar__hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: @color_black40;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    font-size: 13px;
+    line-height: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .profile_avatar__hover:hover {
+    opacity: 1;
+  }
+
+  img {
+    height: 100%;
+  }
+}
+
+.profile_avatar__file {
+  display: none;
+}

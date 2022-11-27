@@ -1,0 +1,53 @@
+@import "../../styles/vars";
+
+.button {
+  .button__item {
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 13px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .blue {
+    background-color: @color_blue;
+    color: @color_white;
+  }
+
+  .red {
+    background-color: @color_red;
+    color: @color_white;
+  }
+
+  .black {
+    background-color: @color_black;
+    color: @color_white;
+  }
+
+  .small {
+    border-radius: @radius_small;
+  }
+
+  .medium {
+    border-radius: @radius_medium;
+  }
+
+  .large {
+    border-radius: @radius_large;
+  }
+
+  .block {
+    display: block;
+    width: 100%;
+  }
+
+  .link {
+    background-color: transparent;
+    color: @color_blue;
+
+    :hover {
+      color: @color_navy;
+    }
+  }
+}
