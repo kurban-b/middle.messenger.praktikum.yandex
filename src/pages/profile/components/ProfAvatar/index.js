@@ -1,8 +1,6 @@
-import Template from './ProfAvatar.hbs'
-import './styles.less'
+import Template from './ProfAvatar.hbs';
+import './styles.less';
 
-const ProfAvatar = ({avatar}) => {
-    return Template({avatar})
-}
+const ProfAvatar = ({ avatar }) => Template({ avatar });
 
-export default ProfAvatar
+export default ProfAvatar;

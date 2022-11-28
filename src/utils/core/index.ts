@@ -32,7 +32,7 @@ export const handlebarsRegisterPartial = () => {
 }
 
 //** Временная функция для примитивного роутинга */
-export const initRouter = (root) => {
+export const initRouter = (): void => {
     window._handleLocation = (href) => {
         window.location.href = href
     }

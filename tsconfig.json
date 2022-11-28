@@ -1,0 +1,7 @@
+{
+  "noImplicitAny": false,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "sourceMap": true,
+  "strictNullChecks": false
+}

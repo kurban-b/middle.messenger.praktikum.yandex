@@ -1,6 +1,4 @@
-import page404 from './page404.hbs'
-import './styles.less'
+import page404 from './page404.hbs';
+import './styles.less';
 
-export default () => {
-    return page404()
-}
+export default () => page404();

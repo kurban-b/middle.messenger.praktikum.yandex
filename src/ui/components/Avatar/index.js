@@ -1,10 +1,8 @@
-import Template from './Avatar.hbs'
-import './styles.less'
-import default_avatar from './assets/avatar-empty.png'
+import Template from './Avatar.hbs';
+import './styles.less';
+import defaultAvatar from './assets/avatar-empty.png';
 
-//** Аватар */
-const Avatar = ({size = 'small', src = default_avatar}) => {
-  return Template({size, src: src})
-}
+//* * Аватар */
+const Avatar = ({ size = 'small', src = defaultAvatar }) => Template({ size, src });
 
-export default Avatar
+export default Avatar;

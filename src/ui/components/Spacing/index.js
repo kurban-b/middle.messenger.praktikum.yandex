@@ -1,9 +1,7 @@
-import Template from './Spacing.hbs'
-import './styles.less'
+import Template from './Spacing.hbs';
+import './styles.less';
 
-//** Отступ */
-const Spacing = ({size = 'small'}) => {
-    return Template({size})
-}
+//* * Отступ */
+const Spacing = ({ size = 'small' }) => Template({ size });
 
-export default Spacing
+export default Spacing;
