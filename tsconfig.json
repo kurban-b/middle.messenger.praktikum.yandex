@@ -1,7 +1,17 @@
 {
-  "noImplicitAny": false,
+  "noImplicitAny": true,
   "noUnusedLocals": true,
   "noUnusedParameters": true,
   "sourceMap": true,
-  "strictNullChecks": false
+  "strictNullChecks": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "es2017",
+      "scripthost",
+      "es2015.proxy"
+    ]
+  }
 }

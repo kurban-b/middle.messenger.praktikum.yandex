@@ -1,12 +1,9 @@
-import {handlebarsRegisterPartial, initRouter} from "./utils/core";
+import {render} from "./utils/core/renderDOM";
+import {handlebarsRegisterComponents, initRouter} from "./utils/core";
 
-//** Рендаринг в DOM */
 document.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#root');
+  handlebarsRegisterComponents()
 
-    // регистрируем паршилы
-    handlebarsRegisterPartial()
-
-    // инициазируем функцию для роутинга
-    root.innerHTML = initRouter(root)
+  render('#root', initRouter())
 })
+
