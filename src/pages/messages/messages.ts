@@ -2,6 +2,7 @@ import './styles.less';
 import data from './data';
 import Icon from './assets/icon__direction-right.svg';
 import Block from "../../utils/core/Block";
+import {pages} from "../../utils/constants/route";
 
 interface IMessagesPage {
   contacts?: {
@@ -29,11 +30,11 @@ class MessagesPage extends Block {
             <div class="messages__contacts">
                 <div class="messages__contacts__top">
                     <div class="btn-block">
-                        <button class="btn-block_item">
+                        <a class="btn-block_item" href="${pages.profile.href}">
                             <span>Профиль</span>
 
                             <img src="${Icon}" alt="">
-                        </button>
+                        </a>
                     </div>
 
                     {{{Spacing size="medium"}}}

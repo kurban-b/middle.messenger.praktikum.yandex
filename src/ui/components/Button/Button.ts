@@ -7,14 +7,18 @@ interface IButton {
   radius?: string
   block?: string
   view?: string
-  events?: Record<string, (e: unknown) => void>
+  onClick?: (e: any) => void
+  events?: Record<string, () => void>
 }
 
 export default class Button extends Block {
-  constructor(props: IButton) {
+  constructor({ onClick, ...props }: IButton) {
     super({
       color: 'blue',
       radius: 'small',
+      events: {
+        'click': onClick
+      },
       ...props
     });
   }

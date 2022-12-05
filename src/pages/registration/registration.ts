@@ -1,8 +1,22 @@
 import './styles.less';
 import data from './data';
 import Block from "../../utils/core/Block";
+import {handleLocation} from "../../utils/core";
+import {pages} from "../../utils/constants/route";
 
 class RegistrationPage extends Block {
+  constructor(props) {
+    super({
+      ...props,
+      onClickAuth: () => {
+        handleLocation(pages.login.href)
+      },
+
+      onClickReg: () => {
+        handleLocation(pages.chat.href)
+      }
+    });
+  }
   render(): string {
     //language=hbs
     return `
@@ -79,6 +93,7 @@ class RegistrationPage extends Block {
                 {{{Button
                         label="${data.regText}"
                         block="block"
+                        onClick=onClickReg
                 }}}
 
                 {{{Spacing size="xxsmall"}}}
@@ -87,6 +102,7 @@ class RegistrationPage extends Block {
                         label="${data.authText}"
                         block="block"
                         view="link"
+                        onClick=onClickAuth
                 }}}
             </main>
         </div>

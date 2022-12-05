@@ -2,6 +2,7 @@ import './styles.less';
 import Icon from './assets/icon__arrow-left_circle.svg';
 import ava from '../../../static/images/gomer.png';
 import Block from "../../utils/core/Block";
+import {pages} from "../../utils/constants/route";
 
 interface IProfilePage {
   iconBack?: string
@@ -25,9 +26,9 @@ class ProfilePage extends Block {
         <main class="profile_group">
             {{{Navigation}}}
 
-            <div class="profile_side_line">
+            <a class="profile_side_line" href="${pages.chat.href}">
                 <img src="{{iconBack}}" alt="">
-            </div>
+            </a>
 
             <!--  Пока что вывел все компоненты сразу  -->
             <div class="profile_info">
