@@ -1,3 +1,3 @@
-import ProfAvatar from "./ProfAvatar";
+import ProfAvatar from './ProfAvatar';
 
-export default ProfAvatar
+export default ProfAvatar;

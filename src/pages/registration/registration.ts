@@ -1,11 +1,11 @@
 import './styles.less';
 import data from './data';
-import Block from "../../utils/core/Block";
-import {handleLocation} from "../../utils/core";
-import {pages} from "../../utils/constants/route";
-import {handleSubmitForm} from "./helpers";
-import {onChangeInvalidClass} from "../../utils/helpers";
-import {EPatterns} from "../../utils/helpers/validator";
+import Block from '../../utils/core/Block';
+import { handleLocation } from '../../utils/core';
+import { pages } from '../../utils/constants/route';
+import { handleSubmitForm } from './helpers';
+import { onChangeInvalidClass } from '../../utils/helpers';
+import { EPatterns } from '../../utils/helpers/validator';
 
 interface IRegistrationPage {
   onClickAuth?: () => void
@@ -38,7 +38,7 @@ class RegistrationPage extends Block {
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <div class="auth-page">
             {{{Navigation}}}
@@ -141,8 +141,8 @@ class RegistrationPage extends Block {
                 }}}
             </main>
         </div>
-    `
+    `;
   }
 }
 
-export default RegistrationPage
+export default RegistrationPage;

@@ -1,5 +1,5 @@
 import './styles.less';
-import Block from "../../../../../../utils/core/Block";
+import Block from '../../../../../../utils/core/Block';
 
 interface IMessage {
   type: string
@@ -11,11 +11,11 @@ interface IMessage {
 
 class Message extends Block {
   constructor(props: IMessage) {
-    super({...props});
+    super({ ...props });
   }
 
   render() {
-    //language=hbs
+    // language=hbs
     return `
         {{#if isOutgoing}}
             {{#if image}}
@@ -58,7 +58,7 @@ class Message extends Block {
                 </li>
             {{/if}}
         {{/if}}
-    `
+    `;
   }
 }
 

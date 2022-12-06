@@ -1,9 +1,9 @@
 import './styles.less';
-import Block from "../../utils/core/Block";
+import Block from '../../utils/core/Block';
 
 class Page500 extends Block {
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
       <div class="page500_wrapper">
         <main class="page500">
@@ -22,8 +22,8 @@ class Page500 extends Block {
             {{{Button label="Назад к чатам" view="link"}}}
         </main>
       </div>
-    `
+    `;
   }
 }
 
-export default Page500
+export default Page500;

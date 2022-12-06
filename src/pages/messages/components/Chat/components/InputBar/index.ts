@@ -1,3 +1,3 @@
-import InputBar from "./InputBar";
+import InputBar from './InputBar';
 
-export default InputBar
+export default InputBar;

@@ -1,4 +1,4 @@
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 interface IInputProps {
   type?: string
@@ -14,18 +14,18 @@ interface IInputProps {
 }
 
 class Input extends Block {
-  constructor({ onChange , ...props }: IInputProps) {
+  constructor({ onChange, ...props }: IInputProps) {
     super({
       type: 'text',
       events: {
-        'input': onChange
+        input: onChange,
       },
-      ...props
+      ...props,
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <input
                 type="{{type}}"
@@ -33,13 +33,13 @@ class Input extends Block {
                 placeholder="{{placeholder}}"
                 name="{{name}}"
                 value="{{value}}"
-                ${this.props.id ? `id=${this.props.id}` : ``}
-                ${this.props.pattern ? `pattern=${this.props.pattern}` : ``}
-                ${this.props.required ? "required" : ""}
-                ${this.props.disabled ? "disabled" : ""}
+                ${this.props.id ? `id=${this.props.id}` : ''}
+                ${this.props.pattern ? `pattern=${this.props.pattern}` : ''}
+                ${this.props.required ? 'required' : ''}
+                ${this.props.disabled ? 'disabled' : ''}
         />
-    `
+    `;
   }
 }
 
-export default Input
+export default Input;

@@ -1,12 +1,12 @@
 import './styles.less';
-import data from "./data";
+import data from './data';
 import Icon from './assets/icon__arrow-left_circle.svg';
 import ava from '../../../static/images/gomer.png';
-import Block from "../../utils/core/Block";
-import {pages} from "../../utils/constants/route";
-import {handleSubmitForm} from "./helpers";
-import {onChangeInvalidClass} from "../../utils/helpers";
-import {EPatterns} from "../../utils/helpers/validator";
+import Block from '../../utils/core/Block';
+import { pages } from '../../utils/constants/route';
+import { handleSubmitForm } from './helpers';
+import { onChangeInvalidClass } from '../../utils/helpers';
+import { EPatterns } from '../../utils/helpers/validator';
 
 interface IProfilePage {
   iconBack?: string
@@ -26,9 +26,9 @@ interface IProfilePage {
 }
 
 enum EToggle {
-  default = "default",
-  password = "password",
-  changeData = "changeData"
+  default = 'default',
+  password = 'password',
+  changeData = 'changeData'
 }
 
 class ProfilePage extends Block {
@@ -37,22 +37,22 @@ class ProfilePage extends Block {
       iconBack: Icon,
       avatar: ava,
       name: 'Иванов Иван',
-      toggle: "password",
+      toggle: 'default',
       onClickChange: () => {
-        this.props.toggle = EToggle.changeData
+        this.props.toggle = EToggle.changeData;
       },
       onClickChangePassword: () => {
-        this.props.toggle = EToggle.password
+        this.props.toggle = EToggle.password;
       },
       onClickExit: () => {
-        console.log('exit')
+        console.log('exit');
       },
       onChangeLogin: onChangeInvalidClass(EPatterns.login),
       onChangePassword: onChangeInvalidClass(EPatterns.password),
       onChangeName: onChangeInvalidClass(EPatterns.name),
       onChangePhone: onChangeInvalidClass(EPatterns.phone),
       onChangeEmail: onChangeInvalidClass(EPatterns.email),
-      ...props
+      ...props,
     });
   }
 
@@ -63,7 +63,7 @@ class ProfilePage extends Block {
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <main class="profile_group">
             {{{Navigation}}}
@@ -260,8 +260,8 @@ class ProfilePage extends Block {
                 </div>
             </div>
         </main>
-    `
+    `;
   }
 }
 
-export default ProfilePage
+export default ProfilePage;

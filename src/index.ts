@@ -1,9 +1,8 @@
-import {render} from "./utils/core/renderDOM";
-import {handlebarsRegisterComponents, initRouter} from "./utils/core";
+import render from './utils/core/renderDOM';
+import { handlebarsRegisterComponents, initRouter } from './utils/core';
 
 document.addEventListener('DOMContentLoaded', () => {
-  handlebarsRegisterComponents()
+  handlebarsRegisterComponents();
 
-  render('#root', initRouter())
-})
-
+  render('#root', initRouter());
+});

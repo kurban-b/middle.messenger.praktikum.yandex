@@ -1,6 +1,6 @@
-import {EPatterns} from "../../utils/helpers/validator";
-import {addBlurValidate, getElement, isClassListHas} from "../../utils/helpers";
-import data from "./data";
+import { EPatterns } from '../../utils/helpers/validator';
+import { addBlurValidate, getElement, isClassListHas } from '../../utils/helpers';
+import data from './data';
 
 export const handleSubmitForm = (): void => {
   const formProfile = getElement('#form-change-profile') as HTMLFormElement;
@@ -14,17 +14,17 @@ export const handleSubmitForm = (): void => {
     const secondName = getElement(`[name="${data.secondNameName}"]`) as HTMLInputElement;
 
     formProfile.addEventListener('submit', (e) => {
-      e.preventDefault()
+      e.preventDefault();
 
       const isHasInvalid = isClassListHas([
         login,
         email,
         firstName,
         secondName,
-        phone
-      ], 'invalid')
+        phone,
+      ], 'invalid');
 
-      if (isHasInvalid) return
+      if (isHasInvalid) return;
 
       console.log({
         login: login.value,
@@ -32,12 +32,12 @@ export const handleSubmitForm = (): void => {
         phone: phone.value,
         firstName: firstName.value,
         secondName: secondName.value,
-      })
-    })
+      });
+    });
 
     addBlurValidate(login, EPatterns.login);
 
-    addBlurValidate(phone, EPatterns.phone)
+    addBlurValidate(phone, EPatterns.phone);
 
     addBlurValidate(email, EPatterns.email);
 
@@ -52,34 +52,34 @@ export const handleSubmitForm = (): void => {
     const repeatPassword = getElement(`[name="${data.repeatPasswordName}"]`) as HTMLInputElement;
 
     formPasswords.addEventListener('submit', (e) => {
-      e.preventDefault()
+      e.preventDefault();
 
       const isHasInvalid = isClassListHas([
         password,
         repeatPassword,
-        oldPassword
-      ], 'invalid')
+        oldPassword,
+      ], 'invalid');
 
       if (isHasInvalid) return;
 
       console.log({
         oldPassword: password.value,
         password: password.value,
-        repeatPassword: repeatPassword.value
-      })
-    })
+        repeatPassword: repeatPassword.value,
+      });
+    });
 
     addBlurValidate(password, EPatterns.password);
     addBlurValidate(oldPassword, EPatterns.password);
 
-    repeatPassword.addEventListener("blur", (e) => {
-      const target = e.target as HTMLInputElement
+    repeatPassword.addEventListener('blur', (e) => {
+      const target = e.target as HTMLInputElement;
 
       if (target.value !== password.value) {
-        target.classList.add('invalid')
+        target.classList.add('invalid');
       } else {
-        target.classList.remove('invalid')
+        target.classList.remove('invalid');
       }
-    })
+    });
   }
-}
+};

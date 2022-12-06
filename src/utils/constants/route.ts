@@ -3,12 +3,12 @@ export const pages = {
     href: '/',
   },
   reg: {
-    href: '/registration'
+    href: '/registration',
   },
   chat: {
-    href: '/chat'
+    href: '/chat',
   },
   profile: {
-    href: '/profile'
-  }
-}
+    href: '/profile',
+  },
+};

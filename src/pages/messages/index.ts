@@ -1,3 +1,3 @@
-import MessagesPage from "./messages";
+import MessagesPage from './messages';
 
-export default MessagesPage
+export default MessagesPage;

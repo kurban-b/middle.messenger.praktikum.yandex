@@ -1,10 +1,10 @@
 import './styles.less';
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 // Для удобства добавил временно данную навигацию
 class Navigation extends Block {
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <nav class="navigation">
             <ul class="navigation__list">
@@ -33,8 +33,8 @@ class Navigation extends Block {
                 </li>
             </ul>
         </nav>
-    `
+    `;
   }
 }
 
-export default Navigation
+export default Navigation;

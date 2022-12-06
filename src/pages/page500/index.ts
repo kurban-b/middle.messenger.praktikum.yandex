@@ -1,3 +1,3 @@
-import Page500 from "./page500";
+import Page500 from './page500';
 
-export default Page500
+export default Page500;

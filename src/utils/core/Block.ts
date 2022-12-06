@@ -1,24 +1,27 @@
-import {EventBus} from "./eventBus";
-import {v4 as makeUUID} from 'uuid';
-import * as Handlebars from "handlebars";
+import { v4 as makeUUID } from 'uuid';
+import * as Handlebars from 'handlebars';
+import { EventBus } from './eventBus';
 
 // Нельзя создавать экземпляр данного класса
 class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
-  public id = makeUUID()
+  public id = makeUUID();
 
   private _element: HTMLElement | null = null;
+
   private _meta: { id: any, props: any } = null;
 
   protected props: any;
+
   protected children: Record<string, Block>;
-  private eventBus: () => EventBus
+
+  private eventBus: () => EventBus;
 
   /** JSDoc
    * @param {Object} propsAndChildren
@@ -34,12 +37,12 @@ class Block {
 
     this._meta = {
       id: this.id,
-      props
+      props,
     };
 
     this.props = this._makePropsProxy(props);
 
-    this.initChildren()
+    this.initChildren();
 
     this.eventBus = () => eventBus;
 
@@ -95,7 +98,7 @@ class Block {
 
     const fragment = this.compile(templateString, { ...this.props });
 
-    const newElement = fragment.firstElementChild as HTMLElement
+    const newElement = fragment.firstElementChild as HTMLElement;
 
     if (this._element) {
       // удаляем все обработчики из текущего элемента
@@ -104,7 +107,7 @@ class Block {
       this._element.replaceWith(newElement);
     }
 
-    this._element = newElement
+    this._element = newElement;
 
     // навешиваем события
     this._addEvents();
@@ -112,7 +115,7 @@ class Block {
 
   // Переопределяется пользователем. Необходимо вернуть разметку
   render(): string {
-    return "";
+    return '';
   }
 
   getContent() {
@@ -127,17 +130,17 @@ class Block {
       get(target: Record<string, unknown>, prop: string) {
         const value = target[prop];
 
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, unknown>, prop: string, value: unknown) {
-        const oldProps = {...target}
+        const oldProps = { ...target };
         target[prop] = value;
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps , target)
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, target);
         return true;
       },
       deleteProperty() {
-        throw new Error('Нет доступа')
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
@@ -146,43 +149,43 @@ class Block {
   }
 
   _addEvents() {
-    const {events = {}} = this.props;
+    const { events = {} } = this.props;
 
     if (!events || !this.element) {
-      return
+      return;
     }
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
 
   _removeEvents() {
-    const {events = {}} = this.props;
+    const { events = {} } = this.props;
 
     if (!events || !this.element) {
-      return
+      return;
     }
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element.removeEventListener(eventName, events[eventName]);
     });
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent().style.display = 'block';
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent().style.display = 'none';
   }
 
   compile(templateString: string, ctx: any) {
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
-    const template = Handlebars.compile(templateString)
+    const template = Handlebars.compile(templateString);
 
-    fragment.innerHTML = template({...ctx, children: this.children});
+    fragment.innerHTML = template({ ...ctx, children: this.children });
 
     Object.entries(this.children).forEach(([_, child]) => {
       const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);
@@ -192,21 +195,21 @@ class Block {
       }
 
       stub.replaceWith(child.getContent());
-    })
+    });
 
     return fragment.content;
   }
 
   protected initChildren() {}
 
-  _getChildren (propsAndChildren: any) {
+  _getChildren(propsAndChildren: any) {
     const children = {};
     const props = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (Array.isArray(value) && value.every((v => v instanceof Block))) {
+      } else if (Array.isArray(value) && value.every(((v) => v instanceof Block))) {
         children[key] = value;
       } else {
         props[key] = value;

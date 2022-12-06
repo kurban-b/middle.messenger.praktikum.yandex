@@ -1,7 +1,7 @@
 import './styles.less';
 import IconBtn from './assets/icon__arrow-right_circle.svg';
 import IconAdd from './assets/icon__skrepka.svg';
-import Block from "../../../../../../utils/core/Block";
+import Block from '../../../../../../utils/core/Block';
 
 interface IInputBar {
   iconAdd: string
@@ -13,12 +13,12 @@ class InputBar extends Block {
     super({
       iconAdd: IconAdd,
       iconBtn: IconBtn,
-      ...props
+      ...props,
     });
   }
 
   render() {
-    //language=hbs
+    // language=hbs
     return `
         <form class="input_bar__group" id="form-message">
             <div class="input_bar__add">
@@ -41,7 +41,7 @@ class InputBar extends Block {
                 </button>
             </div>
         </form>
-    `
+    `;
   }
 }
 

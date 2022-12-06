@@ -1,3 +1,3 @@
-import Page404 from "./page404";
+import Page404 from './page404';
 
-export default Page404
+export default Page404;

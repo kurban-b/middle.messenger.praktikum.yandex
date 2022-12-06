@@ -1,5 +1,5 @@
 import './styles.less';
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 interface IButton {
   label: string
@@ -20,20 +20,20 @@ export default class Button extends Block {
       type: 'button',
       size: 'medium',
       events: {
-        'click': onClick
+        click: onClick,
       },
-      ...props
+      ...props,
     });
   }
 
   render() {
-    //language=hbs
+    // language=hbs
     return `
       <span class="button">
         <button id="btn" class="button__item {{radius}} {{color}} {{block}} {{view}} size-{{size}}" type="{{type}}">
           {{label}}
         </button>
       </span>
-      `
+      `;
   }
 }

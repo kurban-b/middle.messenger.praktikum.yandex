@@ -1,6 +1,6 @@
 import './styles.less';
 import defaultAvatar from './assets/avatar-empty.png';
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 export enum ERadiusSize {
   small = 'small',
@@ -17,19 +17,19 @@ class Avatar extends Block {
     super({
       size: 'small',
       src: defaultAvatar,
-      ...props
+      ...props,
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <div class="avatar__{{size}}">
             {{#if src}}
                 <img src={{src}} alt="аватар" />
             {{/if}}
         </div>
-    `
+    `;
   }
 }
 export default Avatar;

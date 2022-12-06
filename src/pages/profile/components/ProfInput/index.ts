@@ -1,4 +1,3 @@
-import ProfInput from "./ProfInput";
+import ProfInput from './ProfInput';
 
-export default ProfInput
-
+export default ProfInput;

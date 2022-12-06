@@ -1,5 +1,5 @@
 import './styles.less';
-import Block from "../../../../utils/core/Block";
+import Block from '../../../../utils/core/Block';
 
 interface IProfAvatar {
   avatar: string
@@ -11,7 +11,7 @@ class ProfAvatar extends Block {
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <div class="profile_avatar__wrapper">
             <label class="profile_avatar" for="avatar">
@@ -26,7 +26,7 @@ class ProfAvatar extends Block {
 
             <input class="profile_avatar__file" type="file" id="avatar" name="avatar">
         </div>
-    `
+    `;
   }
 }
 

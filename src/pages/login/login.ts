@@ -1,9 +1,9 @@
 import './styles.less';
-import Block from "../../utils/core/Block";
-import data from "./data";
-import {handleSubmitForm, onClickReg} from "./helpers";
-import {onChangeInvalidClass} from "../../utils/helpers";
-import {EPatterns} from "../../utils/helpers/validator";
+import Block from '../../utils/core/Block';
+import data from './data';
+import { handleSubmitForm, onClickReg } from './helpers';
+import { onChangeInvalidClass } from '../../utils/helpers';
+import { EPatterns } from '../../utils/helpers/validator';
 
 export default class LoginPage extends Block {
   constructor(props) {
@@ -16,13 +16,13 @@ export default class LoginPage extends Block {
   }
 
   componentDidMount(oldProps: any) {
-    handleSubmitForm()
+    handleSubmitForm();
 
     super.componentDidMount(oldProps);
   }
 
   render() {
-    //language=hbs
+    // language=hbs
     return `
         <div class="login-page">
             {{{Navigation}}}
@@ -64,6 +64,6 @@ export default class LoginPage extends Block {
                 {{{Button label="${data.regText}" block="block" view="link" onClick=onClickReg}}}
             </main>
         </div>
-    `
+    `;
   }
 }

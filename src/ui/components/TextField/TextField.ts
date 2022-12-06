@@ -1,12 +1,12 @@
 import './styles.less';
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 interface ITextField {
   label?: string
   name?: string
   id?: string
   type?: string
-  required?: "required" | ""
+  required?: 'required' | ''
   pattern?: string
   invalidText?: string
   onChange?: (e: Event) => void
@@ -15,10 +15,10 @@ interface ITextField {
 class TextField extends Block {
   constructor(props: ITextField) {
     super({
-      type: "text",
-      required: "",
-      invalidText: "invalid data",
-      ...props
+      type: 'text',
+      required: '',
+      invalidText: 'invalid data',
+      ...props,
     });
   }
 
@@ -45,7 +45,7 @@ class TextField extends Block {
                 {{invalidText}}
             </span>
         </div>
-    `
+    `;
   }
 }
 

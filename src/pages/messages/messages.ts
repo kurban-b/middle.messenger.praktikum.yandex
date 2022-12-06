@@ -1,9 +1,9 @@
 import './styles.less';
 import data from './data';
 import Icon from './assets/icon__direction-right.svg';
-import Block from "../../utils/core/Block";
-import {pages} from "../../utils/constants/route";
-import {handleSubmitForm} from "./helpers";
+import Block from '../../utils/core/Block';
+import { pages } from '../../utils/constants/route';
+import { handleSubmitForm } from './helpers';
 
 interface IMessagesPage {
   contacts?: {
@@ -18,7 +18,7 @@ class MessagesPage extends Block {
   constructor(props: IMessagesPage) {
     super({
       contacts: data.contacts,
-      ...props
+      ...props,
     });
   }
 
@@ -29,7 +29,7 @@ class MessagesPage extends Block {
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <main class="messages_group">
             {{{Navigation}}}
@@ -69,8 +69,8 @@ class MessagesPage extends Block {
                 {{{Chat}}}
             </div>
         </main>
-    `
+    `;
   }
 }
 
-export default MessagesPage
+export default MessagesPage;

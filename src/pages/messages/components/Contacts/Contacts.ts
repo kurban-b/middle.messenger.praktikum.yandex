@@ -1,13 +1,13 @@
 import './styles.less';
-import Block from "../../../../utils/core/Block";
+import Block from '../../../../utils/core/Block';
 
 class Contacts extends Block {
   constructor(props) {
-    super({...props});
+    super({ ...props });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <div class="contact__group">
             <div class="contact_group__wrapper">
@@ -41,7 +41,7 @@ class Contacts extends Block {
             </div>
         </div>
 
-    `
+    `;
   }
 }
 

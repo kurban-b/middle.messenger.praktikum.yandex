@@ -1,5 +1,5 @@
 import './styles.less';
-import Block from "../../../../utils/core/Block";
+import Block from '../../../../utils/core/Block';
 
 interface IProfInput {
   text: string
@@ -8,8 +8,8 @@ interface IProfInput {
   placeholder: string
   name: string
   value: string
-  required?: "required" | ""
-  disabled?: "disabled" | ""
+  required?: 'required' | ''
+  disabled?: 'disabled' | ''
   invalidText?: string
   pattern?: string
 }
@@ -17,16 +17,16 @@ interface IProfInput {
 class ProfInput extends Block {
   constructor(props: IProfInput) {
     super({
-      type: "text",
-      required: "",
-      disabled: "",
-      invalidText: "invalid data",
-      ...props
+      type: 'text',
+      required: '',
+      disabled: '',
+      invalidText: 'invalid data',
+      ...props,
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <div class="prof-input_group">
             <label for="{{id}}">
@@ -51,7 +51,7 @@ class ProfInput extends Block {
                 {{invalidText}}
             </div>
         </div>
-    `
+    `;
   }
 }
 

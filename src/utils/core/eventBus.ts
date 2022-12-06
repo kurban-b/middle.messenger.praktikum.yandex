@@ -8,7 +8,7 @@ export class EventBus {
   }
 
   on(event: string, callback: TCallback): void {
-    if(!this.listeners[event]) {
+    if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
 
@@ -16,22 +16,20 @@ export class EventBus {
   }
 
   off(event: string, callback: TCallback): void {
-    if(!this.listeners[event]) {
+    if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event].filter((listener) => {
-      return listener !== callback
-    })
+    this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
   }
 
   emit(event: string, ...args: unknown[]): void {
-    if(!this.listeners[event]) {
-      return
+    if (!this.listeners[event]) {
+      return;
     }
 
     this.listeners[event].forEach((listener) => {
       listener(...args);
-    })
+    });
   }
 }

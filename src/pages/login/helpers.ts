@@ -1,12 +1,12 @@
-import {handleLocation} from "../../utils/core";
-import {pages} from "../../utils/constants/route";
-import data from "./data";
-import {EPatterns} from "../../utils/helpers/validator";
-import {addBlurValidate, getElement, isClassListHas} from "../../utils/helpers";
+import { handleLocation } from '../../utils/core';
+import { pages } from '../../utils/constants/route';
+import data from './data';
+import { EPatterns } from '../../utils/helpers/validator';
+import { addBlurValidate, getElement, isClassListHas } from '../../utils/helpers';
 
 export const onClickReg = (): void => {
-  handleLocation(pages.reg.href)
-}
+  handleLocation(pages.reg.href);
+};
 
 export const handleSubmitForm = (): void => {
   const form = getElement('#form-login') as HTMLFormElement;
@@ -23,12 +23,12 @@ export const handleSubmitForm = (): void => {
 
       console.log({
         login: login.value,
-        password: password.value
-      })
+        password: password.value,
+      });
     });
 
     addBlurValidate(login, EPatterns.login);
 
     addBlurValidate(password, EPatterns.password);
   }
-}
+};

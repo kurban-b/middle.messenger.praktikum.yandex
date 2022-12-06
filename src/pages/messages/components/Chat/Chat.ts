@@ -1,7 +1,7 @@
 import './styles.less';
 import data from './data';
 import Icon from './assets/icon__menu-bar.svg';
-import Block from "../../../../utils/core/Block";
+import Block from '../../../../utils/core/Block';
 
 interface IChat {
   name: string
@@ -21,12 +21,12 @@ class Chat extends Block {
       name: 'Иванов Иван',
       messages: data.messages,
       icon: Icon,
-      ...props
+      ...props,
     });
   }
 
   render() {
-    //language=hbs
+    // language=hbs
     return `
         <div class="chat__group">
             <div class="chat_top">
@@ -65,7 +65,7 @@ class Chat extends Block {
                 {{{InputBar}}}
             </div>
         </div>
-    `
+    `;
   }
 }
 

@@ -1,6 +1,6 @@
-import data from "./data";
-import {EPatterns} from "../../utils/helpers/validator";
-import {addBlurValidate, getElement, isClassListHas} from "../../utils/helpers";
+import data from './data';
+import { EPatterns } from '../../utils/helpers/validator';
+import { addBlurValidate, getElement, isClassListHas } from '../../utils/helpers';
 
 export const handleSubmitForm = (): void => {
   const form = getElement('#form-reg') as HTMLFormElement;
@@ -23,8 +23,8 @@ export const handleSubmitForm = (): void => {
         firstName,
         secondName,
         repeatPassword,
-        phone
-      ], 'invalid')
+        phone,
+      ], 'invalid');
 
       if (isHasInvalid) return;
 
@@ -34,11 +34,11 @@ export const handleSubmitForm = (): void => {
         phone: phone.value,
         firstName: firstName.value,
         secondName: secondName.value,
-        password: password.value
-      })
-    })
+        password: password.value,
+      });
+    });
 
-    repeatPassword.addEventListener("blur", (e) => {
+    repeatPassword.addEventListener('blur', (e) => {
       const target = e.target as HTMLInputElement;
 
       if (target.value !== password.value) {
@@ -46,7 +46,7 @@ export const handleSubmitForm = (): void => {
       } else {
         target.classList.remove('invalid');
       }
-    })
+    });
 
     addBlurValidate(login, EPatterns.login);
 
@@ -60,4 +60,4 @@ export const handleSubmitForm = (): void => {
 
     addBlurValidate(secondName, EPatterns.name);
   }
-}
+};
