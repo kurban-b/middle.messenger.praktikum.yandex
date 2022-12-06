@@ -17,6 +17,7 @@ import Page404 from "../../pages/page404";
 import MessagesPage from "../../pages/messages";
 import Profile from "../../pages/profile";
 import {pages} from "../constants/route";
+import Input from "../../ui/components/Input";
 
 //** Регистрирует компоненты при помощи хендлеров в hbs */
 export const handlebarsRegisterComponents = () => {
@@ -32,16 +33,17 @@ export const handlebarsRegisterComponents = () => {
   registerComponent(ProfAvatar, 'ProfAvatar')
   registerComponent(ProfInput, 'ProfInput')
   registerComponent(Navigation, 'Navigation')
+  registerComponent(Input, 'Input')
 }
 
 //** Временная функция для примитивного роутинга */
 export const initRouter = (): Block | null => {
     switch (window.location.pathname) {
       case pages.login.href:
-        return new LoginPage();
+        return new LoginPage({});
 
       case pages.reg.href:
-        return new RegistrationPage();
+        return new RegistrationPage({});
 
       case pages.chat.href:
         return new MessagesPage({});

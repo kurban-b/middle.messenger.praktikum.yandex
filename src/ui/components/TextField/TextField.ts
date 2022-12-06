@@ -7,6 +7,9 @@ interface ITextField {
   id?: string
   type?: string
   required?: "required" | ""
+  pattern?: string
+  invalidText?: string
+  onChange?: (e: Event) => void
 }
 
 class TextField extends Block {
@@ -14,6 +17,7 @@ class TextField extends Block {
     super({
       type: "text",
       required: "",
+      invalidText: "invalid data",
       ...props
     });
   }
@@ -22,18 +26,24 @@ class TextField extends Block {
     // language=hbs
     return `
         <div class="form__group field">
-            <input
-                    type="{{type}}"
+            {{{Input
+                    type=type
                     class="form__field"
-                    placeholder="{{label}}"
-                    name="{{name}}"
-                    id="{{name}}"
-                {{required}}
-            />
+                    placeholder=label
+                    name=name
+                    id=id
+                    pattern=pattern
+                    required=required
+                    onChange=onChange
+            }}}
 
             <label for={{name}} class="form__label">
                 {{label}}
             </label>
+
+            <span class="invalid_text">
+                {{invalidText}}
+            </span>
         </div>
     `
   }

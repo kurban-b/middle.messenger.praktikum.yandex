@@ -1,8 +1,9 @@
 @import "../../../../ui/styles/vars";
 
 .prof-input_group {
-  padding: 10px 0;
-  border-bottom: 1px solid @color_gray;
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
 
   label {
     display: flex;
@@ -14,24 +15,41 @@
       display: flex;
       align-items: flex-end;
     }
+  }
 
-    .prof-input_item {
-      flex: 1;
+  input {
+    flex: 1;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: right;
+    color: #999999;
+    outline: none;
+    border: none;
+    position: relative;
 
-      input {
-        width: 100%;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 13px;
-        text-align: right;
-        color: #999999;
-        outline: none;
-        border: none;
-      }
-
-      input[disabled] {
-        background-color: transparent;
-      }
+    &.invalid ~ .invalid_block {
+      opacity: 1;
+      border-bottom: 1px solid @color_red;
+      color: @color_red;
     }
+  }
+
+  input[disabled] {
+    background-color: transparent;
+  }
+
+  .invalid {
+    color: red;
+  }
+
+  .invalid_block {
+    width: 100%;
+    display: block;
+    padding: 2px 0;
+    font-size: 10px;
+    text-align: right;
+    color: transparent;
+    border-bottom: 1px solid @color_gray;
   }
 }

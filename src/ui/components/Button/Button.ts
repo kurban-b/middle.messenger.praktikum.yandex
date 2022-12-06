@@ -9,6 +9,7 @@ interface IButton {
   view?: string
   onClick?: (e: any) => void
   events?: Record<string, () => void>
+  size?: 'small' | 'medium' | 'large'
 }
 
 export default class Button extends Block {
@@ -16,6 +17,8 @@ export default class Button extends Block {
     super({
       color: 'blue',
       radius: 'small',
+      type: 'button',
+      size: 'medium',
       events: {
         'click': onClick
       },
@@ -27,7 +30,7 @@ export default class Button extends Block {
     //language=hbs
     return `
       <span class="button">
-        <button id="btn" class="button__item {{radius}} {{color}} {{block}} {{view}}">
+        <button id="btn" class="button__item {{radius}} {{color}} {{block}} {{view}} size-{{size}}" type="{{type}}">
           {{label}}
         </button>
       </span>

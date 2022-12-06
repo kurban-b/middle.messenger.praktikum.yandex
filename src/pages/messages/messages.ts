@@ -3,6 +3,7 @@ import data from './data';
 import Icon from './assets/icon__direction-right.svg';
 import Block from "../../utils/core/Block";
 import {pages} from "../../utils/constants/route";
+import {handleSubmitForm} from "./helpers";
 
 interface IMessagesPage {
   contacts?: {
@@ -19,6 +20,12 @@ class MessagesPage extends Block {
       contacts: data.contacts,
       ...props
     });
+  }
+
+  componentDidMount(oldProps: any) {
+    handleSubmitForm();
+
+    super.componentDidMount(oldProps);
   }
 
   render(): string {

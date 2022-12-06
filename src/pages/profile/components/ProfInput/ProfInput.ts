@@ -10,7 +10,8 @@ interface IProfInput {
   value: string
   required?: "required" | ""
   disabled?: "disabled" | ""
-
+  invalidText?: string
+  pattern?: string
 }
 
 class ProfInput extends Block {
@@ -19,6 +20,7 @@ class ProfInput extends Block {
       type: "text",
       required: "",
       disabled: "",
+      invalidText: "invalid data",
       ...props
     });
   }
@@ -31,19 +33,23 @@ class ProfInput extends Block {
                 <div class="prof-input_name">
                     {{text}}
                 </div>
-
-                <div class="prof-input_item">
-                    <input
-                            type="{{type}}"
-                            id="{{id}}"
-                            placeholder="{{placeholder}}"
-                            name="{{name}}"
-                            value="{{value}}"
-                        {{required}}
-                        {{disabled}}
-                    />
-                </div>
             </label>
+
+            {{{Input
+                    type=type
+                    placeholder=placeholder
+                    name=name
+                    id=id
+                    pattern=pattern
+                    value=value
+                    required=required
+                    disabled=disabled
+                    onChange=onChange
+            }}}
+
+            <div class="invalid_block">
+                {{invalidText}}
+            </div>
         </div>
     `
   }

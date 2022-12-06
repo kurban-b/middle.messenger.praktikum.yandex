@@ -1,22 +1,24 @@
 import './styles.less';
 import Block from "../../utils/core/Block";
 import data from "./data";
-import {handleLocation} from "../../utils/core";
-import {pages} from "../../utils/constants/route";
+import {handleSubmitForm, onClickReg} from "./helpers";
+import {onChangeInvalidClass} from "../../utils/helpers";
+import {EPatterns} from "../../utils/helpers/validator";
 
 export default class LoginPage extends Block {
   constructor(props) {
     super({
       ...props,
-
-      onClickAuth: () => {
-        handleLocation(pages.chat.href)
-      },
-
-      onClickReg: () => {
-        handleLocation(pages.reg.href)
-      }
+      onClickReg,
+      onChangeLogin: onChangeInvalidClass(EPatterns.login),
+      onChangePassword: onChangeInvalidClass(EPatterns.password),
     });
+  }
+
+  componentDidMount(oldProps: any) {
+    handleSubmitForm()
+
+    super.componentDidMount(oldProps);
   }
 
   render() {
@@ -30,11 +32,13 @@ export default class LoginPage extends Block {
                     ${data.title}
                 </h1>
 
-                <form>
+                <form id="form-login">
                     {{{TextField
                             name="${data.loginName}"
                             label="${data.loginLabel}"
                             required="required"
+                            invalidText="Invalid login"
+                            onChange=onChangeLogin
                     }}}
 
                     {{{Spacing size="small"}}}
@@ -43,14 +47,17 @@ export default class LoginPage extends Block {
                             name="${data.passwordName}"
                             label="${data.passwordLabel}"
                             required="required"
+                            type="password"
+                            invalidText="Invalid password"
+                            onChange=onChangePassword
                     }}}
 
                     {{{Spacing size="ularge"}}}
 
                     {{{Spacing size="xxlarge"}}}
-                </form>
 
-                {{{Button label="${data.authText}" block="block" onClick=onClickAuth}}}
+                    {{{Button label="${data.authText}" block="block" type="submit"}}}
+                </form>
 
                 {{{Spacing size="xxsmall"}}}
 

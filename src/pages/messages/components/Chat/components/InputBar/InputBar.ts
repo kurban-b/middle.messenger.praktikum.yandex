@@ -20,11 +20,13 @@ class InputBar extends Block {
   render() {
     //language=hbs
     return `
-        <div class="input_bar__group">
+        <form class="input_bar__group" id="form-message">
             <div class="input_bar__add">
-                <button>
+                <input type="file" name="file" id="file">
+
+                <label for="file">
                     <img src="{{iconAdd}}" alt="" />
-                </button>
+                </label>
             </div>
 
             <div class="input_bar__input">
@@ -34,11 +36,11 @@ class InputBar extends Block {
             </div>
 
             <div class="input_bar__button">
-                <button>
+                <button type="submit">
                     <img src="{{iconBtn}}" alt="" />
                 </button>
             </div>
-        </div>
+        </form>
     `
   }
 }
