@@ -15,9 +15,9 @@ interface IAvatar {
 class Avatar extends Block {
   constructor(props: IAvatar) {
     super({
-      size: 'small',
-      src: defaultAvatar,
       ...props,
+      size: props.size || 'small',
+      src: props.src || defaultAvatar,
     });
   }
 

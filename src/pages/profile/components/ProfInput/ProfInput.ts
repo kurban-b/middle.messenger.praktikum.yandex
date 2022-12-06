@@ -17,11 +17,11 @@ interface IProfInput {
 class ProfInput extends Block {
   constructor(props: IProfInput) {
     super({
-      type: 'text',
-      required: '',
-      disabled: '',
-      invalidText: 'invalid data',
       ...props,
+      type: props.type || 'text',
+      required: props.required || '',
+      disabled: props.disabled || '',
+      invalidText: props.invalidText || 'invalid data',
     });
   }
 

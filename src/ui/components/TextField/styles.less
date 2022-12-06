@@ -1,5 +1,4 @@
-@import "../../styles/vars";
-
+@import url("../../styles/vars");
 @primary: #11998e;
 @secondary: #38ef7d;
 @white: #fff;
@@ -11,6 +10,23 @@
   margin-top: 10px;
   width: 100%;
   height: 45px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 13px;
+  color: @color_shadow;
+  z-index: -1;
+}
+
+.invalid_text {
+  display: none;
+  font-size: 11px;
+  color: @color_red;
+  padding-top: 2px;
 }
 
 .form__field {
@@ -43,23 +59,11 @@
   &.invalid ~ .invalid_text {
     display: block;
   }
-}
 
-.invalid_text {
-  display: none;
-  font-size: 11px;
-  color: @color_red;
-  padding-top: 2px;
-}
-
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 13px;
-  color: @color_shadow;
-  z-index: -1;
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
 }
 
 .form__field:focus {
@@ -71,11 +75,6 @@
     font-size: 9px;
     color: @color_shadow;
   }
+
   padding-bottom: 6px;
-}
-/* reset input */
-.form__field{
-  &:required,&:invalid {
-    box-shadow:none;
-  }
 }

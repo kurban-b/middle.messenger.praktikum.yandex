@@ -18,10 +18,10 @@ interface IChat {
 class Chat extends Block {
   constructor(props: IChat) {
     super({
-      name: 'Иванов Иван',
-      messages: data.messages,
-      icon: Icon,
       ...props,
+      name: props.name || 'Иванов Иван',
+      messages: props.messages ||  data.messages,
+      icon: props.icon || Icon,
     });
   }
 

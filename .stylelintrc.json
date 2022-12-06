@@ -1,9 +1,12 @@
 {
   "extends": "stylelint-config-standard",
+  "customSyntax": "postcss-less",
   "rules": {
-    "color-hex-case": "lower"
+    "color-hex-case": "lower",
+    "selector-class-pattern": null
   },
   "ignoreFiles": [
-    "dist/*"
+    "dist/*",
+    "node_modules/*"
   ]
 }

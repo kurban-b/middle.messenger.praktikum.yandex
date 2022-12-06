@@ -9,8 +9,8 @@ interface ISpacing {
 class Spacing extends Block {
   constructor(props: ISpacing) {
     super({
-      size: 'small',
       ...props,
+      size: props.size || 'small',
     });
   }
 

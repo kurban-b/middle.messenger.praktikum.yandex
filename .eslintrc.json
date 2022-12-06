@@ -3,9 +3,18 @@
     "browser": true,
     "es6": true
   },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:promise/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "import",
+    "promise",
+    "@typescript-eslint"
+  ],
   "rules": {
     "max-len": [2, 130],
     "@typescript-eslint/no-unused-vars": 2

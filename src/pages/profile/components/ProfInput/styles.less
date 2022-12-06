@@ -1,9 +1,19 @@
-@import "../../../../ui/styles/vars";
+@import url("../../../../ui/styles/vars");
 
 .prof-input_group {
   padding-top: 15px;
   display: flex;
   flex-wrap: wrap;
+
+  .invalid_block {
+    width: 100%;
+    display: block;
+    padding: 2px 0;
+    font-size: 10px;
+    text-align: right;
+    color: transparent;
+    border-bottom: 1px solid @color_gray;
+  }
 
   label {
     display: flex;
@@ -23,7 +33,7 @@
     font-size: 13px;
     line-height: 13px;
     text-align: right;
-    color: #999999;
+    color: #999;
     outline: none;
     border: none;
     position: relative;
@@ -41,15 +51,5 @@
 
   .invalid {
     color: red;
-  }
-
-  .invalid_block {
-    width: 100%;
-    display: block;
-    padding: 2px 0;
-    font-size: 10px;
-    text-align: right;
-    color: transparent;
-    border-bottom: 1px solid @color_gray;
   }
 }

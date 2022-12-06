@@ -11,9 +11,9 @@ interface IInputBar {
 class InputBar extends Block {
   constructor(props: IInputBar) {
     super({
-      iconAdd: IconAdd,
-      iconBtn: IconBtn,
       ...props,
+      iconAdd: props.iconAdd || IconAdd,
+      iconBtn: props.iconBtn || IconBtn,
     });
   }
 

@@ -5,8 +5,14 @@ import { handleSubmitForm, onClickReg } from './helpers';
 import { onChangeInvalidClass } from '../../utils/helpers';
 import { EPatterns } from '../../utils/helpers/validator';
 
+interface ILoginPageProps {
+  onClickReg?: () => void
+  onChangeLogin?: () => void
+  onChangePassword?: () => void
+}
+
 export default class LoginPage extends Block {
-  constructor(props) {
+  constructor(props: ILoginPageProps) {
     super({
       ...props,
       onClickReg,

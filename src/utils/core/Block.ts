@@ -15,7 +15,7 @@ class Block {
 
   private _element: HTMLElement | null = null;
 
-  private _meta: { id: any, props: any } = null;
+  private _meta: { id: any, props: any } | null = null;
 
   protected props: any;
 
@@ -50,7 +50,7 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));

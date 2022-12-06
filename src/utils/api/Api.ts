@@ -1,4 +1,4 @@
-enum METHODS {
+enum EMethods {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -11,8 +11,15 @@ interface IOptions {
   headers?: Record<string, any>
 }
 
+interface IRequestOptions extends IOptions {
+  method: keyof typeof EMethods
+}
+
 function queryStringify(data: Record<string, any>): string {
-  return Object.entries(data).reduce((str, [key, value], index, arr) => str += `${key}=${value}${arr.length - 1 === index ? '' : '&'}`, '');
+  return Object.entries(data).reduce((str, [key, value], index, arr) => {
+    str += `${key}=${value}${arr.length - 1 === index ? '' : '&'}`
+    return str
+  }, '');
 }
 
 export default class Api {
@@ -25,22 +32,22 @@ export default class Api {
       newUrl += `?${queryStr}`;
     }
 
-    return this.request(newUrl, { ...options, method: METHODS.GET }, options.timeout);
+    return this.request(newUrl, { ...options, method: EMethods.GET }, options.timeout);
   }
 
   post <P>(url: string, options: IOptions = {}): Promise<P> {
-    return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+    return this.request(url, { ...options, method: EMethods.POST }, options.timeout);
   }
 
   put <P>(url: string, options: IOptions = {}): Promise<P> {
-    return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+    return this.request(url, { ...options, method: EMethods.PUT }, options.timeout);
   }
 
   delete <P>(url: string, options: IOptions = {}): Promise<P> {
-    return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    return this.request(url, { ...options, method: EMethods.DELETE }, options.timeout);
   }
 
-  request<RequestT>(url, options, timeout = 5000): Promise<RequestT> {
+  request<RequestT>(url: string, options: IRequestOptions, timeout = 5000): Promise<RequestT> {
     const { method, headers, data } = options;
 
     return new Promise((resolve, reject) => {
@@ -63,9 +70,10 @@ export default class Api {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      if (method === METHODS.GET || !data) {
+      if (method === EMethods.GET || !data) {
         xhr.send();
       } else {
+        // @ts-ignore
         xhr.send(data);
       }
     });

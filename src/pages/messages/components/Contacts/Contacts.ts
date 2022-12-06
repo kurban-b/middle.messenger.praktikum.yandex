@@ -1,8 +1,10 @@
 import './styles.less';
 import Block from '../../../../utils/core/Block';
 
+interface IContacts {}
+
 class Contacts extends Block {
-  constructor(props) {
+  constructor(props: IContacts) {
     super({ ...props });
   }
 
