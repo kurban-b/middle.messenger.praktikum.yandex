@@ -7,10 +7,14 @@ export default function render(query: string, block: Block) {
     throw new Error('root not found')
   }
 
-  // Можно завязаться на реализации вашего класса Block
-  root.appendChild(block.getContent());
+  const element = block.getContent()
+  if (element) {
+    root.appendChild(element);
 
-  block.dispatchComponentDidMount();
+    block.dispatchComponentDidMount();
+  } else {
+    console.error(`Block.getContent() into render return null`)
+  }
 
   return root;
 }

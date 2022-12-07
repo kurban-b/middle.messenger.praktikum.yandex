@@ -118,11 +118,11 @@ class Block {
     return '';
   }
 
-  getContent() {
+  getContent(): HTMLElement | null {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props: any) {
     // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
@@ -144,40 +144,42 @@ class Block {
     });
   }
 
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 
-  _addEvents() {
+  _addEvents(): void {
     const { events = {} } = this.props;
 
-    if (!events || !this.element) {
-      return;
-    }
-
     Object.keys(events).forEach((eventName) => {
+      if (!this._element) return
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
 
-  _removeEvents() {
+  _removeEvents(): void {
     const { events = {} } = this.props;
 
-    if (!events || !this.element) {
-      return;
-    }
-
     Object.keys(events).forEach((eventName) => {
+      if (!this._element) return
       this._element.removeEventListener(eventName, events[eventName]);
     });
   }
 
   show() {
-    this.getContent().style.display = 'block';
+    const element = this.getContent()
+
+    if (element) {
+      element.style.display = 'none';
+    }
   }
 
   hide() {
-    this.getContent().style.display = 'none';
+    const element = this.getContent()
+
+    if (element) {
+      element.style.display = 'none';
+    }
   }
 
   compile(templateString: string, ctx: any) {
@@ -194,7 +196,11 @@ class Block {
         return;
       }
 
-      stub.replaceWith(child.getContent());
+      const el = child.getContent()
+
+      if (el) {
+        stub.replaceWith(el);
+      }
     });
 
     return fragment.content;
@@ -203,8 +209,8 @@ class Block {
   protected initChildren() {}
 
   _getChildren(propsAndChildren: any) {
-    const children = {};
-    const props = {};
+    const children: any = {};
+    const props: any = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {

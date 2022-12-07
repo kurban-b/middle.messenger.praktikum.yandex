@@ -1,6 +1,6 @@
 /** Функция возваращает прокси, который блокирует свойства и методы начинающие с _ */
 export const getProxyDisabledKeys_ = (element: object): object => new Proxy(element, {
-  get(target, prop) {
+  get(target: Record<string | symbol, any>, prop) {
     if (typeof prop === 'string' && prop?.startsWith('_')) {
       throw new Error('Нет прав');
     } else {
