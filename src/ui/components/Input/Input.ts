@@ -11,14 +11,18 @@ interface IInputProps {
   required?: boolean
   disabled?: boolean
   onChange?: (e: InputEvent) => void
+  onBlur?: (e: InputEvent) => void
+  onFocus?: (e: InputEvent) => void
 }
 
 class Input extends Block {
-  constructor({ onChange, ...props }: IInputProps) {
+  constructor({ onChange, onBlur, onFocus, ...props }: IInputProps) {
     super({
       type: 'text',
       events: {
         input: onChange,
+        blur: onBlur,
+        focus: onFocus,
       },
       ...props,
     });

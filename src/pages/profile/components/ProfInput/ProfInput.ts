@@ -12,6 +12,7 @@ interface IProfInput {
   disabled?: 'disabled' | ''
   invalidText?: string
   pattern?: string
+  onBlur?: (e: Event) => void
 }
 
 class ProfInput extends Block {
@@ -45,6 +46,7 @@ class ProfInput extends Block {
                     required=required
                     disabled=disabled
                     onChange=onChange
+                    onBlur=onBlur
             }}}
 
             <div class="invalid_block">

@@ -15,6 +15,8 @@ interface IRequestOptions extends IOptions {
   method: keyof typeof EMethods
 }
 
+type HTTPMethod = (url: string, options?: IOptions) => Promise<string>
+
 function queryStringify(data: Record<string, any>): string {
   return Object.entries(data).reduce((str, [key, value], index, arr) => {
     str += `${key}=${value}${arr.length - 1 === index ? '' : '&'}`
@@ -23,7 +25,7 @@ function queryStringify(data: Record<string, any>): string {
 }
 
 export default class Api {
-  get <P>(url: string, options: IOptions = {}): Promise<P> {
+  get: HTTPMethod = (url, options = {}) => {
     const { data = {} } = options;
     const queryStr: string = queryStringify(data);
     let newUrl: string = url;
@@ -35,15 +37,15 @@ export default class Api {
     return this.request(newUrl, { ...options, method: EMethods.GET }, options.timeout);
   }
 
-  post <P>(url: string, options: IOptions = {}): Promise<P> {
+  post: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: EMethods.POST }, options.timeout);
   }
 
-  put <P>(url: string, options: IOptions = {}): Promise<P> {
+  put: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: EMethods.PUT }, options.timeout);
   }
 
-  delete <P>(url: string, options: IOptions = {}): Promise<P> {
+  delete: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: EMethods.DELETE }, options.timeout);
   }
 

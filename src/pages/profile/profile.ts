@@ -1,28 +1,14 @@
 import './styles.less';
-import data from './data';
 import Icon from './assets/icon__arrow-left_circle.svg';
 import ava from '../../../static/images/gomer.png';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
-import { handleSubmitForm } from './helpers';
-import { onChangeInvalidClass } from '../../utils/helpers';
-import { EPatterns } from '../../utils/helpers/validator';
 
 interface IProfilePage {
   iconBack?: string
   avatar?: string
   name?: string
   toggle?: keyof typeof EToggle
-  onClickChange?: () => void
-  onClickChangePassword?: () => void
-  onClickExit?: () => void
-
-  onClickAuth?: () => void
-  onChangeLogin?: () => void
-  onChangePassword?: () => void
-  onChangeName?: () => void
-  onChangePhone?: () => void
-  onChangeEmail?: () => void
 }
 
 enum EToggle {
@@ -47,19 +33,8 @@ class ProfilePage extends Block {
       onClickExit: () => {
         console.log('exit');
       },
-      onChangeLogin: onChangeInvalidClass(EPatterns.login),
-      onChangePassword: onChangeInvalidClass(EPatterns.password),
-      onChangeName: onChangeInvalidClass(EPatterns.name),
-      onChangePhone: onChangeInvalidClass(EPatterns.phone),
-      onChangeEmail: onChangeInvalidClass(EPatterns.email),
       ...props,
     });
-  }
-
-  componentDidMount(oldProps: any) {
-    handleSubmitForm();
-
-    super.componentDidMount(oldProps);
   }
 
   render(): string {
@@ -81,58 +56,7 @@ class ProfilePage extends Block {
 
                 <div class="profile_inputs">
                     {{#if ${this.props.toggle === EToggle.changeData}}}
-                        <form id="form-change-profile">
-                            {{{ProfInput
-                                    text="${data.emailLabel}"
-                                    id="email"
-                                    name="${data.emailName}"
-                                    value="pochta@yandex.ru"
-                                    invalidText="invalid email"
-                                    onChange=onChangeLogin
-                            }}}
-
-                            {{{ProfInput
-                                    text="${data.loginLabel}"
-                                    id="login"
-                                    name="${data.loginName}"
-                                    value="ivanivanov"
-                                    invalidText="invalid login"
-                                    onChange=onChangeLogin
-                            }}}
-
-                            {{{ProfInput
-                                    text="${data.firstNameLabel}"
-                                    id="first_name"
-                                    name="${data.firstNameName}"
-                                    value="Иван"
-                                    invalidText="invalid first name"
-                                    onChange=onChangeName
-                            }}}
-
-                            {{{ProfInput
-                                    text="${data.secondNameLabel}"
-                                    id="second_name"
-                                    name="${data.secondNameName}"
-                                    value="Иванов"
-                                    invalidText="invalid second name"
-                                    onChange=onChangeName
-                            }}}
-
-                            {{{ProfInput
-                                    text="${data.phoneLabel}"
-                                    id="phone"
-                                    name="${data.phoneName}"
-                                    value="+7(909)967-30-30"
-                                    invalidText="invalid phone"
-                                    onChange=onChangePhone
-                            }}}
-
-                            {{{Spacing size="xlarge"}}}
-
-                            <div class="profile_submit">
-                                {{{Button label="Сохранить" block="block" type="submit"}}}
-                            </div>
-                        </form>
+                        {{{SettingProfileForm}}}
                     {{/if}}
 
                     {{#if ${this.props.toggle === EToggle.default}}}
@@ -219,43 +143,7 @@ class ProfilePage extends Block {
                     {{/if}}
 
                     {{#if ${this.props.toggle === EToggle.password}}}
-                        <form id="form-change-password">
-                            {{{ProfInput
-                                    text="${data.oldPasswordLabel}"
-                                    type="password"
-                                    id="oldPassword"
-                                    name="${data.oldPasswordName}"
-                                    value="888999"
-                                    invalidText="invalid password"
-                                    onChange=onChangePassword
-                            }}}
-
-                            {{{ ProfInput
-                                    text="${data.passwordLabel}"
-                                    type="password"
-                                    id="newPassword"
-                                    name="${data.passwordName}"
-                                    value="999999"
-                                    invalidText="invalid password"
-                                    onChange=onChangePassword
-                            }}}
-
-                            {{{ ProfInput
-                                    text="${data.repeatPasswordLabel}"
-                                    type="password"
-                                    id="newPasswordRepeat"
-                                    name="${data.repeatPasswordName}"
-                                    value="999999"
-                                    invalidText="Пароли не совпадают"
-                                    onChange=onChangePassword
-                            }}}
-
-                            {{{Spacing size="xlarge"}}}
-
-                            <div class="profile_submit">
-                                {{{Button label="Сохранить" block="block" type="submit"}}}
-                            </div>
-                        </form>
+                        {{{SettingPasswordForm}}}
                     {{/if}}
                 </div>
             </div>

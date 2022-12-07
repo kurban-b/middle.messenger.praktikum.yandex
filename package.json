@@ -7,7 +7,7 @@
     "eslint-fix": "eslint \"**/*.ts\" --fix",
     "lint": "stylelint \"**/*.less\"",
     "lint-fix": "stylelint \"**/*.less\" --fix",
-    "dev": "parcel static/index.html --port 3000 --no-cache",
+    "dev": "parcel static/index.html --port 3000 --no-cache --open",
     "build": "parcel build static/index.html --no-cache",
     "server": "node ./server.js",
     "start": "npm run build && npm run server"

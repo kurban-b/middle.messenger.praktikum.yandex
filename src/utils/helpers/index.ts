@@ -27,4 +27,19 @@ export const addBlurValidate = (htmlElement: HTMLElement, patternName: keyof typ
   });
 };
 
+//* * Получаем элемент из ДОМ-дерева по селектору */
 export const getElement = (selector: string): Element | null => document.querySelector(selector);
+
+//* * Декотратор который возвращает обработчик с паттерном для валидации */
+export const decoratorHandler = (patternName: keyof typeof EPatterns): (e: Event) => void => {
+  return (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    const isValid = new Validator().test(target.value, patternName);
+
+    if (!isValid) {
+      target.classList.add('invalid');
+    } else {
+      target.classList.remove('invalid');
+    }
+  }
+}

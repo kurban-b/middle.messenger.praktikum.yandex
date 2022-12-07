@@ -1,4 +1,4 @@
-type TCallback = (...args: unknown[]) => void
+type TCallback = (...args: any[]) => void
 
 export class EventBus {
   private listeners: {[key: string]: TCallback[]};

@@ -2,6 +2,8 @@ import { v4 as makeUUID } from 'uuid';
 import * as Handlebars from 'handlebars';
 import { EventBus } from './eventBus';
 
+type Props = Record<string, any>
+
 // Нельзя создавать экземпляр данного класса
 class Block {
   static EVENTS = {
@@ -17,7 +19,7 @@ class Block {
 
   private _meta: { id: any, props: any } | null = null;
 
-  protected props: any;
+  protected props: Props;
 
   protected children: Record<string, Block>;
 
@@ -61,11 +63,11 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  _componentDidMount(oldProps: any) {
+  _componentDidMount(oldProps: Props) {
     this.componentDidMount(oldProps);
   }
 
-  componentDidMount(oldProps: any) {}
+  componentDidMount(_oldProps: Props) {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -77,7 +79,7 @@ class Block {
     }
   }
 
-  componentDidUpdate(oldProps: any, newProps: any) {
+  componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
 
@@ -122,7 +124,7 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 

@@ -18,6 +18,10 @@ import MessagesPage from '../../pages/messages';
 import Profile from '../../pages/profile';
 import { pages } from '../constants/route';
 import Input from '../../ui/components/Input';
+import LoginForm from "../../pages/login/components/LoginForm";
+import RegForm from "../../pages/registration/components/RegForm";
+import SettingProfileForm from "../../pages/profile/components/SettingProfileForm";
+import SettingPasswordForm from "../../pages/profile/components/SettingPasswordForm";
 
 //* * Регистрирует компоненты при помощи хендлеров в hbs */
 export const handlebarsRegisterComponents = () => {
@@ -34,10 +38,14 @@ export const handlebarsRegisterComponents = () => {
   registerComponent(ProfInput, 'ProfInput');
   registerComponent(Navigation, 'Navigation');
   registerComponent(Input, 'Input');
+  registerComponent(LoginForm, 'LoginForm');
+  registerComponent(RegForm, 'RegForm');
+  registerComponent(SettingProfileForm, 'SettingProfileForm');
+  registerComponent(SettingPasswordForm, 'SettingPasswordForm');
 };
 
 //* * Временная функция для примитивного роутинга */
-export const initRouter = (): Block | null => {
+export const initRouter = (): Block => {
   switch (window.location.pathname) {
     case pages.login.href:
       return new LoginPage({});

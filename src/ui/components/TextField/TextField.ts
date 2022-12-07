@@ -10,6 +10,8 @@ interface ITextField {
   pattern?: string
   invalidText?: string
   onChange?: (e: Event) => void
+  onBlur?: (e: Event) => void
+  onFocus?: (e: Event) => void
 }
 
 class TextField extends Block {
@@ -35,6 +37,8 @@ class TextField extends Block {
                     pattern=pattern
                     required=required
                     onChange=onChange
+                    onBlur=onBlur
+                    onFocus=onFocus
             }}}
 
             <label for={{name}} class="form__label">
