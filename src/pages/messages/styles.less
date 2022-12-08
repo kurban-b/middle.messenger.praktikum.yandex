@@ -1,5 +1,4 @@
-@import "../../ui/styles/vars";
-
+@import url("../../ui/styles/vars");
 
 .messages_group {
   display: flex;
@@ -10,7 +9,7 @@
     width: 310px;
     height: 100%;
     background-color: @color_graylight;
-    border-right: 1px solid #EAEAEA;
+    border-right: 1px solid #eaeaea;
   }
 
   .messages__chat {
@@ -19,11 +18,13 @@
   }
 
   .messages__contacts__top {
-    padding: 20px 10px 14px 10px;
+    padding: 20px 10px 14px;
   }
 
   .btn-block {
     text-align: right;
+    display: flex;
+    justify-content: right;
   }
 
   .btn-block_item {
@@ -36,6 +37,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    text-decoration: none;
 
     span {
       color: @color_shadow;
@@ -55,5 +57,4 @@
   .search__input::placeholder {
     text-align: center;
   }
-
 }
