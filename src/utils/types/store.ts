@@ -1,8 +1,8 @@
 import { User } from './auth';
 import { Chats } from './chats';
-import { IMessage } from './messages';
+import { Message } from './messages';
 
-export interface IStore {
+export interface Store {
   auth?: {
     profile: User
     error: string
@@ -16,5 +16,5 @@ export interface IStore {
     list: User[]
     error: string
   },
-  messages?: Record<number, IMessage[]>
+  messages?: Record<number, Message[]>
 }

@@ -2,7 +2,7 @@ import store, { StoreEvents } from './index';
 import Block from '../core/Block';
 import isEqual from '../helpers/isEqual';
 
-function connect(mapStateToProps: (state: any) => any) {
+function connect(mapStateToProps: (state: any, block?: typeof Block) => any) {
   return function (Component: typeof Block) {
     return class extends Component {
       constructor(props: Record<string, any>) {
@@ -20,7 +20,7 @@ function connect(mapStateToProps: (state: any) => any) {
           if (!isEqual(state, newState)) {
             this.setProps({ ...newState });
           }
-
+          
           // не забываем сохранить новое состояние
           state = newState;
         });

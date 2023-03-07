@@ -1,4 +1,4 @@
-export interface ISignInPost {
+export interface SignInPost {
   login: string
   password: string
 }

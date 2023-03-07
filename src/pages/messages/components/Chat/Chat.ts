@@ -3,12 +3,12 @@ import Block from '../../../../utils/core/Block';
 import connect from '../../../../utils/store/connect';
 import { onAddUser, onRemoveUser } from './helpers';
 import store from '../../../../utils/store';
-import { IStore } from '../../../../utils/types/store';
+import { Store } from '../../../../utils/types/store';
 import isEqual from '../../../../utils/helpers/isEqual';
 import { User } from '../../../../utils/types/auth';
 
 interface IChat {
-  messages: IStore['messages']
+  messages: Store['messages']
   activeChatId: number
   profile: User
 }

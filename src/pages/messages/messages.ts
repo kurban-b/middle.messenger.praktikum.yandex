@@ -114,5 +114,5 @@ class MessagesPage extends Block {
 export default connect((state) => ({
   chats: state?.chat?.chats,
   activeChatId: state?.chat?.activeChatId,
-  messages: state?.messages,
+  messages: { ...state?.messages },
 }))(MessagesPage);

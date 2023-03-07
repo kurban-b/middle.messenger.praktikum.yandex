@@ -1,5 +1,5 @@
 import AuthApi from '../utils/api/AuthApi';
-import { ISignInPost, SignupData } from '../utils/types/auth';
+import { SignInPost, SignupData } from '../utils/types/auth';
 import router from '../utils/core/router';
 import { pages } from '../utils/constants/route';
 import store from '../utils/store';
@@ -11,7 +11,7 @@ class AuthController {
     this.api = new AuthApi();
   }
 
-  public async signin(data: ISignInPost) {
+  public async signin(data: SignInPost) {
     try {
       store.set('auth.error', undefined);
 

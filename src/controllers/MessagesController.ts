@@ -1,6 +1,6 @@
 import WSTransport, { WSTransportEvents } from '../utils/core/ws-transport';
 import store from '../utils/store';
-import { IMessage } from '../utils/types/messages';
+import { Message } from '../utils/types/messages';
 
 class MessagesController {
   private sockets: Map<number, WSTransport> = new Map();
@@ -16,10 +16,10 @@ class MessagesController {
 
     this.sockets.set(id, wsTransport);
 
-    await wsTransport.connect();
-
-    this.subscribe(wsTransport, id);
-    this.fetchOldMessages(id);
+    await wsTransport.connect().then(() => {
+      this.subscribe(wsTransport, id);
+      this.fetchOldMessages(id);
+    })
   }
 
   sendMessage(id: number, message: string) {
@@ -49,7 +49,7 @@ class MessagesController {
     Array.from(this.sockets.values()).forEach((socket) => socket.close());
   }
 
-  private onMessage(id: number, messages: IMessage | IMessage[]) {
+  private onMessage(id: number, messages: Message | Message[]) {
     let messagesToAdd: IMessage[] = [];
 
     if (Array.isArray(messages)) {
