@@ -1,6 +1,6 @@
 import './styles.less';
 import Block from '../../../../utils/core/Block';
-import usersController from "../../../../controllers/UsersController";
+import usersController from '../../../../controllers/UsersController';
 
 interface IProfAvatar {
   avatar: string
@@ -10,17 +10,17 @@ class ProfAvatar extends Block {
   constructor(props: IProfAvatar) {
     super({
       onChange(e: InputEvent) {
-        const target = e.target as HTMLInputElement
-        const file = target.files && target.files[0]
-        const data = new FormData()
+        const target = e.target as HTMLInputElement;
+        const file = target.files && target.files[0];
+        const data = new FormData();
 
         if (file) {
-          data.append("avatar", file)
+          data.append('avatar', file);
 
-          usersController.updateAvatar(data)
+          usersController.updateAvatar(data);
         }
       },
-      ...props
+      ...props,
     });
   }
 

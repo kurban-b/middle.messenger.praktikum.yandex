@@ -1,5 +1,5 @@
-import BaseAPI from "../core/base-api";
-import {Chats} from "../types/chats";
+import BaseAPI from '../core/base-api';
+import { Chats } from '../types/chats';
 
 class ChatsApi extends BaseAPI {
   constructor() {
@@ -7,27 +7,27 @@ class ChatsApi extends BaseAPI {
   }
 
   read(data: { offset?: number; limit?: number; title?: string }): Promise<Chats[]> {
-    return this.http.get('', { data })
+    return this.http.get('', { data });
   }
 
   create(data: { title: string }) {
-    return this.http.post('', { data })
+    return this.http.post('', { data });
   }
 
   delete(data: { chatId: number }): Promise<unknown> {
-    return this.http.delete('', { data })
+    return this.http.delete('', { data });
   }
 
   addChatUsers(data: {users: number[]; chatId: number}) {
-    return this.http.put('/users', { data })
+    return this.http.put('/users', { data });
   }
 
   deleteChatUsers(data: {users: number[]; chatId: number}) {
-    return this.http.delete('/users', { data })
+    return this.http.delete('/users', { data });
   }
 
   getChatsToken(id: number): Promise<{ token: string }> {
-    return this.http.post(`/token/${id}`)
+    return this.http.post(`/token/${id}`);
   }
 }
 

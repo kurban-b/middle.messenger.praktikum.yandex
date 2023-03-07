@@ -1,3 +1,3 @@
-import RegForm from "./RegForm";
+import RegForm from './RegForm';
 
 export default RegForm;

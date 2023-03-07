@@ -1,6 +1,6 @@
 import './styles.less';
 import Block from '../../../../../../utils/core/Block';
-import connect from "../../../../../../utils/store/connect";
+import connect from '../../../../../../utils/store/connect';
 
 interface IMessage {
   text?: string
@@ -11,14 +11,14 @@ interface IMessage {
 
 class Message extends Block {
   constructor(props: IMessage) {
-    const date = new Date(props.time)
-    const minutes = date.getMinutes()
-    const hours = date.getHours()
+    const date = new Date(props.time);
+    const minutes = date.getMinutes();
+    const hours = date.getHours();
 
     super({
       ...props,
       time: `${hours}:${minutes}`,
-      isOutgoing: props.profileId === props.userId
+      isOutgoing: props.profileId === props.userId,
     });
   }
 
@@ -50,4 +50,4 @@ class Message extends Block {
   }
 }
 
-export default connect((state) => ({profileId: state.auth?.profile.id}))(Message);
+export default connect((state) => ({ profileId: state.auth?.profile.id }))(Message);

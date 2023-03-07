@@ -1,4 +1,4 @@
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 interface IDialogFormProps {
   buttonText: string
@@ -10,15 +10,15 @@ class DialogForm extends Block {
   constructor(props: IDialogFormProps) {
     super({
       ...props,
-      label: props.label || "Логин",
+      label: props.label || 'Логин',
       events: {
-        submit: props.onSubmit
-      }
+        submit: props.onSubmit,
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
       <form id="dialog-form">
           {{{TextField
@@ -31,8 +31,8 @@ class DialogForm extends Block {
 
           {{{Button label=buttonText block="block" type="submit"}}}
       </form>
-    `
+    `;
   }
 }
 
-export default DialogForm
+export default DialogForm;

@@ -1,6 +1,6 @@
-import {EventBus} from "../core/eventBus";
-import set from "../helpers/set";
-import {IStore} from "../types/store";
+import { EventBus } from '../core/eventBus';
+import set from '../helpers/set';
+import { IStore } from '../types/store';
 
 interface Indexed extends IStore {
   [key: string]: unknown
@@ -22,7 +22,7 @@ class Store extends EventBus {
 
     // метод EventBus
     this.emit(StoreEvents.Updated);
-  };
+  }
 }
 
 export default new Store();

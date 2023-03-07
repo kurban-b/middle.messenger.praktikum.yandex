@@ -1,26 +1,26 @@
 import { handlebarsRegisterComponents } from './utils/core';
-import Router from "./utils/core/router";
-import {pages} from "./utils/constants/route";
-import RegistrationPage from "./pages/registration";
-import MessagesPage from "./pages/messages";
-import ProfilePage from "./pages/profile";
-import LoginPage from "./pages/login";
-import Block from "./utils/core/Block";
-import AuthController from "./controllers/AuthController";
+import Router from './utils/core/router';
+import { pages } from './utils/constants/route';
+import RegistrationPage from './pages/registration';
+import MessagesPage from './pages/messages';
+import ProfilePage from './pages/profile';
+import LoginPage from './pages/login';
+import Block from './utils/core/Block';
+import AuthController from './controllers/AuthController';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  handlebarsRegisterComponents()
+  handlebarsRegisterComponents();
 
   function getPageComponent<T>(component: T): Block {
-    return component as Block
+    return component as Block;
   }
 
   Router.use(pages.login.href, getPageComponent(LoginPage))
     .use(pages.reg.href, getPageComponent(RegistrationPage))
     .use(pages.chat.href, getPageComponent(MessagesPage))
-    .use(pages.profile.href, getPageComponent(ProfilePage))
+    .use(pages.profile.href, getPageComponent(ProfilePage));
 
-  let isProtectedRoute = true;
+  const isProtectedRoute = true;
 
   try {
     await AuthController.fetchProfile();
@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     Router.start();
 
     if (!isProtectedRoute) {
-      Router.go(pages.chat.href)
+      Router.go(pages.chat.href);
     }
   } catch (e) {
-    Router.start()
+    Router.start();
 
     if (isProtectedRoute) {
-      Router.go(pages.login.href)
+      Router.go(pages.login.href);
     }
   }
 });

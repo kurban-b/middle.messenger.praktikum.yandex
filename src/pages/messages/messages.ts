@@ -2,13 +2,13 @@ import './styles.less';
 import Icon from './assets/icon__direction-right.svg';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
-import connect from "../../utils/store/connect";
-import chatsController from "../../controllers/ChatsController";
-import { onCreateChat} from "./helpers";
-import {IStore} from "../../utils/types/store";
+import connect from '../../utils/store/connect';
+import chatsController from '../../controllers/ChatsController';
+import { onCreateChat } from './helpers';
+import { Chats } from '../../utils/types/chats';
 
 interface IMessagesPageProps {
-  chats?: IStore['chat']['chats']
+  chats?: Chats[]
   activeChatId?: number
 }
 
@@ -20,24 +20,24 @@ class MessagesPage extends Block {
       onOpenDialog: () => {
         this.setProps({
           createChatDialog: true,
-        })
+        });
       },
       onSubmitСreateChat: (e: SubmitEvent) => {
-        onCreateChat(e)
+        onCreateChat(e);
         this.setProps({
           createChatDialog: false,
-        })
+        });
       },
       onClose: () => {
         this.setProps({
           createChatDialog: false,
-        })
-      }
+        });
+      },
     });
   }
 
   init() {
-    chatsController.getChats({})
+    chatsController.getChats({});
 
     super.init();
   }

@@ -12,14 +12,14 @@ import Navigation from '../../ui/components/Navigation';
 import { registerComponent } from './registerComponent';
 import RegistrationPage from '../../pages/registration/registration';
 import Input from '../../ui/components/Input';
-import LoginForm from "../../pages/login/components/LoginForm";
-import RegForm from "../../pages/registration/components/RegForm";
-import SettingProfileForm from "../../pages/profile/components/SettingProfileForm";
-import SettingPasswordForm from "../../pages/profile/components/SettingPasswordForm";
-import Router from "./router";
-import Dialog from "../../ui/components/Dialog";
-import DialogForm from "../../ui/components/DialogForm";
-import Search from "../../pages/messages/components/Search";
+import LoginForm from '../../pages/login/components/LoginForm';
+import RegForm from '../../pages/registration/components/RegForm';
+import SettingProfileForm from '../../pages/profile/components/SettingProfileForm';
+import SettingPasswordForm from '../../pages/profile/components/SettingPasswordForm';
+import Router from './router';
+import Dialog from '../../ui/components/Dialog';
+import DialogForm from '../../ui/components/DialogForm';
+import Search from '../../pages/messages/components/Search';
 
 //* * Регистрирует компоненты при помощи хендлеров в hbs */
 export const handlebarsRegisterComponents = () => {
@@ -41,11 +41,11 @@ export const handlebarsRegisterComponents = () => {
   registerComponent(SettingProfileForm, 'SettingProfileForm');
   registerComponent(SettingPasswordForm, 'SettingPasswordForm');
   registerComponent(Dialog, 'Dialog');
-  registerComponent(DialogForm, 'DialogForm')
-  registerComponent(Search, 'Search')
+  registerComponent(DialogForm, 'DialogForm');
+  registerComponent(Search, 'Search');
 };
 
 //* * обработчик для перехода на другую страницу */
 export const handleLocation = (href: string) => {
-  Router.go(href)
+  Router.go(href);
 };

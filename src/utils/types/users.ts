@@ -7,7 +7,6 @@ export interface UserRequestData {
   phone: string
 }
 
-
 export interface ChangePasswordRequest {
   oldPassword: string
   newPassword: string

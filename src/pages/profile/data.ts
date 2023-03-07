@@ -16,5 +16,5 @@ export default {
   repeatPasswordLabel: 'Повторите новый пароль',
   repeatPasswordName: 'repeatPassword',
   displayNameName: 'display_name',
-  displayNameLabel: 'Имя в чате'
+  displayNameLabel: 'Имя в чате',
 };

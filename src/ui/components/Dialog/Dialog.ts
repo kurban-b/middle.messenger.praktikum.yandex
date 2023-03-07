@@ -1,4 +1,4 @@
-import Block from "../../../utils/core/Block";
+import Block from '../../../utils/core/Block';
 
 interface IDialogProps {
   id: string,
@@ -16,23 +16,23 @@ class Dialog extends Block {
       ...props,
       events: {
         click: (e: PointerEvent) => {
-          const target = e.target as Element
-          const classList = Array.from(target.classList)
+          const target = e.target as Element;
+          const classList = Array.from(target.classList);
 
           if (classList.includes('dialog__block')) {
-            this.setProps({...props, open: false})
+            this.setProps({ ...props, open: false });
 
             if (props.onClose) {
-              props.onClose()
+              props.onClose();
             }
           }
-        }
+        },
       },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return (
       `<div class="dialog__block ${this.props.open ? 'dialog__block_show' : 'dialog__block_hide'}">
           <div class="dialog__modal">
@@ -51,7 +51,7 @@ class Dialog extends Block {
               {{/if}}
           </div>
        </div>`
-    )
+    );
   }
 }
 

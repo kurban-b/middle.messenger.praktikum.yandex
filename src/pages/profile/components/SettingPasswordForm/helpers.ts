@@ -1,7 +1,7 @@
-import {isClassListHas} from "../../../../utils/helpers";
-import router from "../../../../utils/core/router";
-import usersController from "../../../../controllers/UsersController";
-import store from "../../../../utils/store";
+import { isClassListHas } from '../../../../utils/helpers';
+import router from '../../../../utils/core/router';
+import usersController from '../../../../controllers/UsersController';
+import store from '../../../../utils/store';
 
 interface IFormElements extends HTMLFormControlsCollection {
   oldPassword: HTMLInputElement
@@ -10,11 +10,11 @@ interface IFormElements extends HTMLFormControlsCollection {
   btn: HTMLButtonElement
 }
 
-export const onSubmit = (e: SubmitEvent ): void => {
+export const onSubmit = (e: SubmitEvent): void => {
   e.preventDefault();
   const target = e.target as HTMLFormElement;
   const elements = target.elements as IFormElements;
-  const state = store.getState()
+  const state = store.getState();
 
   const isHasInvalid = isClassListHas([
     elements.oldPassword,
@@ -25,17 +25,17 @@ export const onSubmit = (e: SubmitEvent ): void => {
   if (isHasInvalid) return;
 
   const callback = async () => {
-    const error = state?.auth?.error
+    const error = state?.auth?.error;
 
     await usersController.updatePassword({
       oldPassword: elements.oldPassword.value,
-      newPassword: elements.newPassword.value
-    })
+      newPassword: elements.newPassword.value,
+    });
 
-    if (error) return
+    if (error) return;
 
-    router.replace(router.pathname)
-  }
+    router.replace(router.pathname);
+  };
 
-  callback()
-}
+  callback();
+};

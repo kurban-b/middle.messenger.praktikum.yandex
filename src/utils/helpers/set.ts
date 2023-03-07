@@ -1,4 +1,4 @@
-import merge from "./merge";
+import merge from './merge';
 
 type Indexed<T = unknown> = {
   [key in string]: T;
@@ -10,7 +10,7 @@ function set(object: Indexed | unknown, path: string, value: unknown): Indexed |
   }
 
   if (typeof path !== 'string'!) {
-    throw new Error('path must be string')
+    throw new Error('path must be string');
   }
 
   const result = path.split('.').reduceRight<Indexed>((acc, key) => ({
@@ -19,4 +19,4 @@ function set(object: Indexed | unknown, path: string, value: unknown): Indexed |
   return merge(object as Indexed, result);
 }
 
-export default set
+export default set;

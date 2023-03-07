@@ -2,7 +2,7 @@ import './styles.less';
 import Block from '../../utils/core/Block';
 import data from './data';
 import { onClickReg } from './helpers';
-import connect from "../../utils/store/connect";
+import connect from '../../utils/store/connect';
 
 interface ILoginPageProps {
   onClickReg?: () => void
@@ -49,4 +49,4 @@ class LoginPage extends Block {
   }
 }
 
-export default connect((state) => ({error: state?.auth?.error}))(LoginPage)
+export default connect((state) => ({ error: state?.auth?.error }))(LoginPage);

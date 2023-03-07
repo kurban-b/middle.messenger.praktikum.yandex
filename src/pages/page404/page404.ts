@@ -1,15 +1,15 @@
 import './styles.less';
 import Block from '../../utils/core/Block';
-import router from "../../utils/core/router";
-import {pages} from "../../utils/constants/route";
+import router from '../../utils/core/router';
+import { pages } from '../../utils/constants/route';
 
 class Page404 extends Block {
   constructor(props: Record<string, unknown>) {
     super({
-      onClick () {
-        router.go(pages.chat.href)
+      onClick() {
+        router.go(pages.chat.href);
       },
-      ...props
+      ...props,
     });
   }
 

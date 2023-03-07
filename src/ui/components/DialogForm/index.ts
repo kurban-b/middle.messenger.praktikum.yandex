@@ -1,3 +1,3 @@
-import DialogForm from "./DialogForm";
+import DialogForm from './DialogForm';
 
-export default DialogForm
+export default DialogForm;

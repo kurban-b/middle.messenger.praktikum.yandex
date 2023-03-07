@@ -1,5 +1,5 @@
-import {isClassListHas} from "../../../../utils/helpers";
-import AuthController from "../../../../controllers/AuthController";
+import { isClassListHas } from '../../../../utils/helpers';
+import AuthController from '../../../../controllers/AuthController';
 
 interface IFormElements extends HTMLFormControlsCollection {
   login: HTMLInputElement
@@ -18,6 +18,6 @@ export const onSubmit = (e: SubmitEvent) => {
 
   AuthController.signin({
     login: elements.login.value,
-    password: elements.password.value
-  })
-}
+    password: elements.password.value,
+  });
+};

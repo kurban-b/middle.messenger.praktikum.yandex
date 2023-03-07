@@ -17,20 +17,21 @@ interface IRequestOptions extends IOptions {
 
 function queryStringify(data: Record<string, any>): string {
   return Object.entries(data).reduce((str, [key, value], index, arr) => {
-    str += `${key}=${value}${arr.length - 1 === index ? '' : '&'}`
-    return str
+    str += `${key}=${value}${arr.length - 1 === index ? '' : '&'}`;
+    return str;
   }, '');
 }
 
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';
+
   protected endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  get<R = void> (url: string, options: IOptions = {}): Promise<R> {
+  get<R = void>(url: string, options: IOptions = {}): Promise<R> {
     const { data = {} } = options;
     const queryStr: string = queryStringify(data);
     let newUrl: string = url;
@@ -42,15 +43,15 @@ export default class HTTPTransport {
     return this.request(this.endpoint + newUrl, { ...options, method: EMethods.GET }, options.timeout);
   }
 
-  post<R = void> (url: string, options: IOptions = {}): Promise<R> {
+  post<R = void>(url: string, options: IOptions = {}): Promise<R> {
     return this.request(this.endpoint + url, { ...options, method: EMethods.POST }, options.timeout);
   }
 
-  put<R = void> (url: string, options: IOptions = {}): Promise<R> {
+  put<R = void>(url: string, options: IOptions = {}): Promise<R> {
     return this.request(this.endpoint + url, { ...options, method: EMethods.PUT }, options.timeout);
   }
 
-  delete<R = void> (url: string, options: IOptions = {}): Promise<R> {
+  delete<R = void>(url: string, options: IOptions = {}): Promise<R> {
     return this.request(this.endpoint + url, { ...options, method: EMethods.DELETE }, options.timeout);
   }
 
@@ -83,9 +84,9 @@ export default class HTTPTransport {
         resolve(xhr.response);
       };
 
-      xhr.onabort = () => reject({reason: 'abort'});
-      xhr.onerror = () => reject({reason: 'network error'});
-      xhr.ontimeout = () => reject({reason: 'timeout'});
+      xhr.onabort = () => reject({ reason: 'abort' });
+      xhr.onerror = () => reject({ reason: 'network error' });
+      xhr.ontimeout = () => reject({ reason: 'timeout' });
 
       if (!(data instanceof FormData)) {
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -96,12 +97,10 @@ export default class HTTPTransport {
 
       if (method === EMethods.GET || !data) {
         xhr.send();
+      } else if (!(data instanceof FormData)) {
+        xhr.send(JSON.stringify(data));
       } else {
-        if (!(data instanceof FormData)) {
-          xhr.send(JSON.stringify(data));
-        } else {
-          xhr.send(data);
-        }
+        xhr.send(data);
       }
     });
   }

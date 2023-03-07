@@ -2,7 +2,7 @@ import './styles.less';
 import IconBtn from './assets/icon__arrow-right_circle.svg';
 import IconAdd from './assets/icon__skrepka.svg';
 import Block from '../../../../../../utils/core/Block';
-import {onSubmit} from "./helpers";
+import { onSubmit } from './helpers';
 
 interface IInputBar {
   iconAdd: string
@@ -16,8 +16,8 @@ class InputBar extends Block {
       iconAdd: props.iconAdd || IconAdd,
       iconBtn: props.iconBtn || IconBtn,
       events: {
-        submit: onSubmit
-      }
+        submit: onSubmit,
+      },
     });
   }
 

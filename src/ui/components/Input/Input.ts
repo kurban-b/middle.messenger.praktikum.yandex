@@ -17,7 +17,9 @@ interface IInputProps {
 }
 
 class Input extends Block {
-  constructor({ onChange, onBlur, onFocus, ...props }: IInputProps) {
+  constructor({
+    onChange, onBlur, onFocus, ...props
+  }: IInputProps) {
     super({
       type: 'text',
       events: {

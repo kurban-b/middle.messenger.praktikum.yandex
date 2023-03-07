@@ -1,6 +1,6 @@
-import UsersApi from "../utils/api/UsersApi";
-import {ChangePasswordRequest, FindUserRequest, UserRequestData} from "../utils/types/users";
-import store from "../utils/store";
+import UsersApi from '../utils/api/UsersApi';
+import { ChangePasswordRequest, FindUserRequest, UserRequestData } from '../utils/types/users';
+import store from '../utils/store';
 
 class UsersController {
   private readonly api: UsersApi;
@@ -9,58 +9,57 @@ class UsersController {
     this.api = new UsersApi();
   }
 
-  public async getUserById (userId: string) {
+  public async getUserById(userId: string) {
     try {
-      return await this.api.getUserById(userId)
+      return await this.api.getUserById(userId);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
 
-  public async updateProfile (data: UserRequestData) {
+  public async updateProfile(data: UserRequestData) {
     try {
-      store.set('auth.error', undefined)
+      store.set('auth.error', undefined);
 
-      const res = await this.api.updateProfile(data)
+      const res = await this.api.updateProfile(data);
 
-      store.set('auth.profile', res)
+      store.set('auth.profile', res);
     } catch (e: any) {
-      store.set('auth.error', e?.reason)
+      store.set('auth.error', e?.reason);
 
-      console.error(e)
+      console.error(e);
     }
   }
 
-  public async updateAvatar (data: FormData) {
+  public async updateAvatar(data: FormData) {
     try {
-      const res = await this.api.updateAvatar(data)
+      const res = await this.api.updateAvatar(data);
 
-      store.set('auth.profile', res)
+      store.set('auth.profile', res);
     } catch (e: any) {
-      console.error(e)
+      console.error(e);
     }
   }
 
-  public async updatePassword (data: ChangePasswordRequest) {
+  public async updatePassword(data: ChangePasswordRequest) {
     try {
-      store.set('auth.error', undefined)
+      store.set('auth.error', undefined);
 
-      await this.api.updatePassword(data)
-
+      await this.api.updatePassword(data);
     } catch (e: any) {
-      store.set('auth.error', e?.reason)
+      store.set('auth.error', e?.reason);
 
-      console.error(e)
+      console.error(e);
     }
   }
 
-  public async searchUser (data: FindUserRequest) {
+  public async searchUser(data: FindUserRequest) {
     try {
-      const response = await this.api.searchUser(data)
+      const response = await this.api.searchUser(data);
 
-      store.set('users.list', response)
+      store.set('users.list', response);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
 }

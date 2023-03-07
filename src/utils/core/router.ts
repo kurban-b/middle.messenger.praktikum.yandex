@@ -1,19 +1,20 @@
 import render from '../../utils/core/renderDOM';
-import Block from "./Block";
-import queryStringify from "../helpers/queryString";
-import {queryStringToObject} from "../helpers/queryStringToObject";
+import Block from './Block';
+import queryStringify from '../helpers/queryString';
+import { queryStringToObject } from '../helpers/queryStringToObject';
 
-const isEqual = (a: string, b: string): boolean => {
-  return a === b
-}
+const isEqual = (a: string, b: string): boolean => a === b;
 
 type TPathname = string
 
 class Route {
-  private _pathname: string
-  private _blockClass: Block
-  private _block: Block | null
-  private _props: Record<string, any>
+  private _pathname: string;
+
+  private _blockClass: Block;
+
+  private _block: Block | null;
+
+  private _props: Record<string, any>;
 
   constructor(pathname: TPathname, view: Block, props: Record<string, any>) {
     this._pathname = pathname;
@@ -51,14 +52,21 @@ class Route {
 }
 
 class Router {
-  private routes: Route[] = []
-  private history: History = window.history
-  private _currentRoute?: Route | null = null
-  private _rootQuery: string = ''
-  private static __instance: Router
-  public pathname: string = window.location.pathname
-  public href: string = window.location.href
-  public query: Record<string, any> = {}
+  private routes: Route[] = [];
+
+  private history: History = window.history;
+
+  private _currentRoute?: Route | null = null;
+
+  private _rootQuery = '';
+
+  private static __instance: Router;
+
+  public pathname: string = window.location.pathname;
+
+  public href: string = window.location.href;
+
+  public query: Record<string, any> = {};
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -69,15 +77,15 @@ class Router {
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-    this.query = queryStringToObject(this.href)
+    this.query = queryStringToObject(this.href);
 
     Router.__instance = this;
   }
 
   use(pathname: TPathname, block: Block) {
-    const route = new Route(pathname, block, {rootQuery: this._rootQuery});
+    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
     this.routes.push(route);
-    return this
+    return this;
   }
 
   start() {
@@ -100,38 +108,38 @@ class Router {
   }
 
   go(pathname: string, query?: Record<string, any>) {
-    const href = pathname + (query ? `?${queryStringify(query)}` : '')
+    const href = pathname + (query ? `?${queryStringify(query)}` : '');
 
-    this.history.pushState({}, "", href);
+    this.history.pushState({}, '', href);
     this._onRoute(pathname);
   }
 
   back() {
-    this.history.back()
+    this.history.back();
   }
 
   forward() {
-    this.history.forward()
+    this.history.forward();
   }
 
   getRoute(pathname: TPathname): Route | undefined {
-    return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname));
   }
 
   replace(pathname: TPathname, query?: Record<string, any>) {
-    const href = pathname + (query ? `?${queryStringify(query)}` : '')
+    const href = pathname + (query ? `?${queryStringify(query)}` : '');
 
-    window.location.replace(href)
+    window.location.replace(href);
   }
 
-  exclude (queryArray: string[]) {
-    const newQuery = this.query
+  exclude(queryArray: string[]) {
+    const newQuery = this.query;
 
     queryArray.forEach((key) => {
-      delete newQuery[key]
-    })
+      delete newQuery[key];
+    });
 
-    this.go(this.pathname, newQuery)
+    this.go(this.pathname, newQuery);
   }
 }
 

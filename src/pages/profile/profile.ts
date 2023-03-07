@@ -2,11 +2,11 @@ import './styles.less';
 import Icon from './assets/icon__arrow-left_circle.svg';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
-import connect from "../../utils/store/connect";
-import {User} from "../../utils/types/auth";
-import router from "../../utils/core/router";
-import {toggleHandler} from "./helpers";
-import authController from "../../controllers/AuthController";
+import connect from '../../utils/store/connect';
+import { User } from '../../utils/types/auth';
+import router from '../../utils/core/router';
+import { toggleHandler } from './helpers';
+import authController from '../../controllers/AuthController';
 
 interface IProfilePage extends User {
   iconBack?: string
@@ -27,16 +27,16 @@ class ProfilePage extends Block {
       toggle: toggleHandler(router),
       onClickChange: () => {
         router.replace(router.pathname, {
-           settings: EToggle.changeData
-        })
+          settings: EToggle.changeData,
+        });
       },
       onClickChangePassword: () => {
         router.replace(router.pathname, {
-          settings: EToggle.password
-        })
+          settings: EToggle.password,
+        });
       },
       onClickExit: () => {
-        authController.logout()
+        authController.logout();
       },
       ...props,
     });

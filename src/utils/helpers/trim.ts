@@ -3,8 +3,8 @@ function trim(string: string, chars?: string): string {
     return string.trim();
   }
 
-  const reg = new RegExp(`[${chars}]`, "gi");
-  return string.replace(reg, "");
+  const reg = new RegExp(`[${chars}]`, 'gi');
+  return string.replace(reg, '');
 }
 
 export default trim;

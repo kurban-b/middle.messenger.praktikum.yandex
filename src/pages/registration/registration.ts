@@ -2,8 +2,8 @@ import './styles.less';
 import data from './data';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
-import router from "../../utils/core/router";
-import connect from "../../utils/store/connect";
+import router from '../../utils/core/router';
+import connect from '../../utils/store/connect';
 
 interface IRegistrationPage {
   onClickAuth?: () => void
@@ -14,7 +14,7 @@ class RegistrationPage extends Block {
     super({
       ...props,
       onClickAuth: () => {
-        router.go(pages.login.href)
+        router.go(pages.login.href);
       },
     });
   }
@@ -56,4 +56,4 @@ class RegistrationPage extends Block {
   }
 }
 
-export default connect((state) => ({error: state?.auth?.error}))(RegistrationPage)
+export default connect((state) => ({ error: state?.auth?.error }))(RegistrationPage);

@@ -1,26 +1,27 @@
 import './styles.less';
 import Block from '../../../../utils/core/Block';
-import connect from "../../../../utils/store/connect";
-import {onAddUser, onRemoveUser} from "./helpers";
-import store from "../../../../utils/store";
-import {IStore} from "../../../../utils/types/store";
-import isEqual from "../../../../utils/helpers/isEqual";
+import connect from '../../../../utils/store/connect';
+import { onAddUser, onRemoveUser } from './helpers';
+import store from '../../../../utils/store';
+import { IStore } from '../../../../utils/types/store';
+import isEqual from '../../../../utils/helpers/isEqual';
+import { User } from '../../../../utils/types/auth';
 
 interface IChat {
   messages: IStore['messages']
   activeChatId: number
-  profile: IStore['auth']['profile']
+  profile: User
 }
 
 class Chat extends Block {
   constructor(props: IChat) {
     const list = (() => {
       if (props.messages && props.activeChatId) {
-        if (props.messages.hasOwnProperty(props.activeChatId)) return props.messages[props.activeChatId]
-        return []
+        if (props.messages.hasOwnProperty(props.activeChatId)) return props.messages[props.activeChatId];
+        return [];
       }
-      return []
-    })()
+      return [];
+    })();
 
     super({
       ...props,
@@ -28,23 +29,23 @@ class Chat extends Block {
       messages: list,
       removeUserDialog: false,
       onClickAddUser: () => {
-        store.set('users.error', undefined)
-        this.setProps({ ...props, removeUserDialog: false, addUserDialog: true})
+        store.set('users.error', undefined);
+        this.setProps({ ...props, removeUserDialog: false, addUserDialog: true });
       },
       onClickRemoveUser: () => {
-        store.set('users.error', undefined)
-        this.setProps({ ...props, addUserDialog: false, removeUserDialog: true})
+        store.set('users.error', undefined);
+        this.setProps({ ...props, addUserDialog: false, removeUserDialog: true });
       },
-      onAddUser: onAddUser,
-      onRemoveUser: onRemoveUser
+      onAddUser,
+      onRemoveUser,
     });
   }
 
   componentDidUpdate(_oldProps: IChat, _newProps: IChat): boolean {
     if (!isEqual(_oldProps, _newProps)) {
-      this.setProps({..._newProps})
+      this.setProps({ ..._newProps });
 
-      return true
+      return true;
     }
     return super.componentDidUpdate(_oldProps, _newProps);
   }
@@ -109,5 +110,5 @@ class Chat extends Block {
 
 export default connect((state) => ({
   dialogError: state?.users?.error,
-  profile: state?.auth?.profile
+  profile: state?.auth?.profile,
 }))(Chat);

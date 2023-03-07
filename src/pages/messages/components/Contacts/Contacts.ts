@@ -1,9 +1,9 @@
 import './styles.less';
 import Block from '../../../../utils/core/Block';
-import store from "../../../../utils/store";
-import {Chats} from "../../../../utils/types/chats";
-import MessagesController from "../../../../controllers/MessagesController";
-import ChatsController from "../../../../controllers/ChatsController";
+import store from '../../../../utils/store';
+import { Chats } from '../../../../utils/types/chats';
+import MessagesController from '../../../../controllers/MessagesController';
+import ChatsController from '../../../../controllers/ChatsController';
 
 interface IContacts {
   id: number
@@ -18,22 +18,22 @@ class Contacts extends Block {
       ...props,
       events: {
         click: async () => {
-          await ChatsController.getChatsTokens(props.id)
+          await ChatsController.getChatsTokens(props.id);
 
-          const token = store.getState().chat?.token
+          const token = store.getState().chat?.token;
 
           if (token) {
-            await MessagesController.connect(props.id, token)
+            await MessagesController.connect(props.id, token);
           }
 
-          store.set('chat.activeChatId', props.id)
-        }
-      }
+          store.set('chat.activeChatId', props.id);
+        },
+      },
     });
   }
 
   render(): string {
-    const time = this.props.time ? `${new Date(this.props.time).getHours()}:${new Date(this.props.time).getMinutes()}` : ''
+    const time = this.props.time ? `${new Date(this.props.time).getHours()}:${new Date(this.props.time).getMinutes()}` : '';
     // language=hbs
     return `
         <div class="contact__group ${store.getState().chat?.activeChatId === this.props.id ? 'contact__group_active' : ''}">

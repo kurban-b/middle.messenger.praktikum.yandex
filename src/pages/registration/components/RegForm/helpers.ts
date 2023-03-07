@@ -1,5 +1,5 @@
-import {isClassListHas} from "../../../../utils/helpers";
-import AuthController from "../../../../controllers/AuthController";
+import { isClassListHas } from '../../../../utils/helpers';
+import AuthController from '../../../../controllers/AuthController';
 
 interface IFormElements extends HTMLFormControlsCollection {
   login: HTMLInputElement
@@ -12,11 +12,10 @@ interface IFormElements extends HTMLFormControlsCollection {
   btn: HTMLButtonElement
 }
 
-export const onSubmit = (e: SubmitEvent ): void => {
+export const onSubmit = (e: SubmitEvent): void => {
   e.preventDefault();
   const target = e.target as HTMLFormElement;
   const elements = target.elements as IFormElements;
-
 
   const isHasInvalid = isClassListHas([
     elements.login,
@@ -25,7 +24,7 @@ export const onSubmit = (e: SubmitEvent ): void => {
     elements.first_name,
     elements.second_name,
     elements.email,
-    elements.repeatPassword
+    elements.repeatPassword,
   ], 'invalid');
 
   if (isHasInvalid) return;
@@ -37,5 +36,5 @@ export const onSubmit = (e: SubmitEvent ): void => {
     first_name: elements.first_name.value,
     second_name: elements.second_name.value,
     password: elements.login.value,
-  })
-}
+  });
+};

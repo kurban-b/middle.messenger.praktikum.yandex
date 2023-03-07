@@ -1,12 +1,12 @@
-import Block from "../../../../utils/core/Block";
-import data from "../../data";
-import {onSubmit} from "./helpers";
-import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
-import {EPatterns} from "../../../../utils/helpers/validator";
-import connect from "../../../../utils/store/connect";
-import {User} from "../../../../utils/types/auth";
+import Block from '../../../../utils/core/Block';
+import data from '../../data';
+import { onSubmit } from './helpers';
+import { decoratorHandler, onChangeInvalidClass } from '../../../../utils/helpers';
+import { EPatterns } from '../../../../utils/helpers/validator';
+import connect from '../../../../utils/store/connect';
+import { User } from '../../../../utils/types/auth';
 
-interface ISettingProfileForm extends User {}
+type ISettingProfileForm = User
 
 class SettingProfileForm extends Block {
   constructor({ ...props }: ISettingProfileForm) {
@@ -22,13 +22,13 @@ class SettingProfileForm extends Block {
       onBlurName: decoratorHandler(EPatterns.name),
       onBlurPhone: decoratorHandler(EPatterns.phone),
       events: {
-        submit: onSubmit
-      }
+        submit: onSubmit,
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
       <form id="form-change-profile">
           {{{ProfInput
@@ -95,8 +95,8 @@ class SettingProfileForm extends Block {
               {{{Button label="Сохранить" block="block" type="submit"}}}
           </div>
       </form>
-    `
+    `;
   }
 }
 
-export default connect((state => ({ ...state.auth.profile })))(SettingProfileForm);
+export default connect(((state) => ({ ...state.auth.profile })))(SettingProfileForm);

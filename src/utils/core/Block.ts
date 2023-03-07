@@ -154,7 +154,7 @@ class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      if (!this._element) return
+      if (!this._element) return;
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
@@ -163,13 +163,13 @@ class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      if (!this._element) return
+      if (!this._element) return;
       this._element.removeEventListener(eventName, events[eventName]);
     });
   }
 
   show() {
-    const element = this.getContent()
+    const element = this.getContent();
 
     if (element) {
       element.style.display = '';
@@ -177,7 +177,7 @@ class Block {
   }
 
   hide() {
-    const element = this.getContent()
+    const element = this.getContent();
 
     if (element) {
       element.style.display = 'none';
@@ -198,7 +198,7 @@ class Block {
         return;
       }
 
-      const el = child.getContent()
+      const el = child.getContent();
 
       if (el) {
         stub.replaceWith(el);

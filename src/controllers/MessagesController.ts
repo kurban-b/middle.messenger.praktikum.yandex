@@ -1,6 +1,6 @@
-import WSTransport, {WSTransportEvents} from "../utils/core/ws-transport";
-import store from "../utils/store";
-import {IMessage} from "../utils/types/messages";
+import WSTransport, { WSTransportEvents } from '../utils/core/ws-transport';
+import store from '../utils/store';
+import { IMessage } from '../utils/types/messages';
 
 class MessagesController {
   private sockets: Map<number, WSTransport> = new Map();
@@ -10,7 +10,7 @@ class MessagesController {
       return;
     }
 
-    const userId = store.getState().auth?.profile.id
+    const userId = store.getState().auth?.profile.id;
 
     const wsTransport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`);
 
@@ -42,11 +42,11 @@ class MessagesController {
       throw new Error(`Chat ${id} is not connected`);
     }
 
-    socket.send({type: 'get old', content: '0'});
+    socket.send({ type: 'get old', content: '0' });
   }
 
   closeAll() {
-    Array.from(this.sockets.values()).forEach(socket => socket.close());
+    Array.from(this.sockets.values()).forEach((socket) => socket.close());
   }
 
   private onMessage(id: number, messages: IMessage | IMessage[]) {
@@ -74,6 +74,5 @@ class MessagesController {
     transport.on(WSTransportEvents.Close, () => this.onClose(id));
   }
 }
-
 
 export default new MessagesController();

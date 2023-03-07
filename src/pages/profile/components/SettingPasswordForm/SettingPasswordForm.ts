@@ -1,8 +1,8 @@
-import Block from "../../../../utils/core/Block";
-import data from "../../data";
-import {onSubmit} from "./helpers";
-import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
-import {EPatterns} from "../../../../utils/helpers/validator";
+import Block from '../../../../utils/core/Block';
+import data from '../../data';
+import { onSubmit } from './helpers';
+import { decoratorHandler, onChangeInvalidClass } from '../../../../utils/helpers';
+import { EPatterns } from '../../../../utils/helpers/validator';
 
 interface ISettingPasswordForm {}
 
@@ -13,13 +13,13 @@ class SettingPasswordForm extends Block {
       onChangePassword: onChangeInvalidClass(EPatterns.password),
       onBlurPassword: decoratorHandler(EPatterns.password),
       events: {
-        submit: onSubmit
-      }
+        submit: onSubmit,
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <form id="form-change-password">
             {{{ProfInput
@@ -69,7 +69,7 @@ class SettingPasswordForm extends Block {
                 {{/if}}
             </div>
         </form>
-    `
+    `;
   }
 }
 
