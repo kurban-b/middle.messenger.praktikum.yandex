@@ -1,24 +1,45 @@
 import './styles.less';
-import data from './data';
 import Icon from './assets/icon__direction-right.svg';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
+import connect from "../../utils/store/connect";
+import chatsController from "../../controllers/ChatsController";
+import { onCreateChat} from "./helpers";
+import {IStore} from "../../utils/types/store";
 
-interface IMessagesPage {
-  contacts?: {
-    name: string
-    lastMessage: string
-    time: string
-    newCount: string
-  }
+interface IMessagesPageProps {
+  chats?: IStore['chat']['chats']
+  activeChatId?: number
 }
 
 class MessagesPage extends Block {
-  constructor(props: IMessagesPage) {
+  constructor(props: IMessagesPageProps) {
     super({
-      contacts: data.contacts,
       ...props,
+      createChatDialog: false,
+      onOpenDialog: () => {
+        this.setProps({
+          createChatDialog: true,
+        })
+      },
+      onSubmitСreateChat: (e: SubmitEvent) => {
+        onCreateChat(e)
+        this.setProps({
+          createChatDialog: false,
+        })
+      },
+      onClose: () => {
+        this.setProps({
+          createChatDialog: false,
+        })
+      }
     });
+  }
+
+  init() {
+    chatsController.getChats({})
+
+    super.init();
   }
 
   render(): string {
@@ -41,29 +62,57 @@ class MessagesPage extends Block {
 
                     <div class="search">
                         <label>
-                            <input class="search__input" type="text" placeholder="Поиск">
+                            {{{Search}}}
                         </label>
                     </div>
                 </div>
 
                 <div class="messages__contacts_list">
-                    {{#each contacts}}
+                    {{#each chats}}
                         {{{ Contacts
-                                name=name
-                                lastMessage=lastMessage
-                                time=time
-                                newCount=newCount
+                                id=id
+                                activeChatId=activeChatId
+                                name=title
+                                lastMessage=last_message.content
+                                time=last_message.time
+                                newCount=unread_count
                         }}}
                     {{/each}}
+                </div>
+
+                {{{Spacing size="medium"}}}
+
+                <div class="chat__btn__add">
+                    {{{Button label="Создать чат" block="block" onClick=onOpenDialog}}}
                 </div>
             </div>
 
             <div class="messages__chat">
-                {{{Chat}}}
+                {{#if activeChatId }}
+                    {{{Chat activeChatId=activeChatId messages=messages}}}
+                {{else}}
+                    <div class="choose__chat">
+                        Выберите чат
+                    </div>
+                {{/if}}
             </div>
+
+            {{{Dialog
+                    title="Создать чат"
+                    id="createChat"
+                    open=createChatDialog
+                    buttonText="Создать"
+                    onSubmit=onSubmitСreateChat
+                    label="Название чата"
+                    onClose=onClose
+            }}}
         </main>
     `;
   }
 }
 
-export default MessagesPage;
+export default connect((state) => ({
+  chats: state?.chat?.chats,
+  activeChatId: state?.chat?.activeChatId,
+  messages: state?.messages,
+}))(MessagesPage);

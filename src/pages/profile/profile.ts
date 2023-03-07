@@ -1,17 +1,19 @@
 import './styles.less';
 import Icon from './assets/icon__arrow-left_circle.svg';
-import ava from '../../../static/images/gomer.png';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
+import connect from "../../utils/store/connect";
+import {User} from "../../utils/types/auth";
+import router from "../../utils/core/router";
+import {toggleHandler} from "./helpers";
+import authController from "../../controllers/AuthController";
 
-interface IProfilePage {
+interface IProfilePage extends User {
   iconBack?: string
-  avatar?: string
-  name?: string
   toggle?: keyof typeof EToggle
 }
 
-enum EToggle {
+export enum EToggle {
   default = 'default',
   password = 'password',
   changeData = 'changeData'
@@ -21,17 +23,20 @@ class ProfilePage extends Block {
   constructor(props: IProfilePage) {
     super({
       iconBack: Icon,
-      avatar: ava,
-      name: 'Иванов Иван',
-      toggle: 'default',
+      name: `${props.first_name || ''} ${props.second_name || ''}`,
+      toggle: toggleHandler(router),
       onClickChange: () => {
-        this.props.toggle = EToggle.changeData;
+        router.replace(router.pathname, {
+           settings: EToggle.changeData
+        })
       },
       onClickChangePassword: () => {
-        this.props.toggle = EToggle.password;
+        router.replace(router.pathname, {
+          settings: EToggle.password
+        })
       },
       onClickExit: () => {
-        console.log('exit');
+        authController.logout()
       },
       ...props,
     });
@@ -65,7 +70,7 @@ class ProfilePage extends Block {
                                     text="Почта"
                                     id="email"
                                     name="email"
-                                    value="pochta@yandex.ru"
+                                    value=email
                                     disabled="disabled"
                             }}}
 
@@ -73,7 +78,7 @@ class ProfilePage extends Block {
                                     text="Логин"
                                     id="login"
                                     name="login"
-                                    value="ivanivanov"
+                                    value=login
                                     disabled="disabled"
                             }}}
 
@@ -81,7 +86,7 @@ class ProfilePage extends Block {
                                     text="Имя"
                                     id="first_name"
                                     name="first_name"
-                                    value="Иван"
+                                    value=first_name
                                     disabled="disabled"
                             }}}
 
@@ -89,7 +94,7 @@ class ProfilePage extends Block {
                                     text="Фамилия"
                                     id="second_name"
                                     name="second_name"
-                                    value="Иванов"
+                                    value=second_name
                                     disabled="disabled"
                             }}}
 
@@ -97,7 +102,7 @@ class ProfilePage extends Block {
                                     text="Имя в чате"
                                     id="display_name"
                                     name="display_name"
-                                    value="Иван"
+                                    value=display_name
                                     disabled="disabled"
                             }}}
 
@@ -105,7 +110,7 @@ class ProfilePage extends Block {
                                     text="Телефон"
                                     id="phone"
                                     name="phone"
-                                    value="+7 (909) 967 30 30"
+                                    value=phone
                                     disabled="disabled"
                             }}}
 
@@ -152,4 +157,4 @@ class ProfilePage extends Block {
   }
 }
 
-export default ProfilePage;
+export default connect((state) => ({ ...state?.auth?.profile }))(ProfilePage);

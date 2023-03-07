@@ -3,14 +3,15 @@ import data from "../../data";
 import {onSubmit} from "./helpers";
 import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
 import {EPatterns} from "../../../../utils/helpers/validator";
+import connect from "../../../../utils/store/connect";
+import {User} from "../../../../utils/types/auth";
 
-interface ISettingProfileForm {}
+interface ISettingProfileForm extends User {}
 
 class SettingProfileForm extends Block {
   constructor({ ...props }: ISettingProfileForm) {
     super({
       ...props,
-      password: "",
       onChangeLogin: onChangeInvalidClass(EPatterns.login),
       onChangeName: onChangeInvalidClass(EPatterns.name),
       onChangePhone: onChangeInvalidClass(EPatterns.phone),
@@ -34,7 +35,7 @@ class SettingProfileForm extends Block {
                   text="${data.emailLabel}"
                   id="email"
                   name="${data.emailName}"
-                  value="pochta@yandex.ru"
+                  value=email
                   invalidText="invalid email"
                   onChange=onChangeEmail
                   onBlur=onBlurEmail
@@ -44,7 +45,7 @@ class SettingProfileForm extends Block {
                   text="${data.loginLabel}"
                   id="login"
                   name="${data.loginName}"
-                  value="ivanivanov"
+                  value=login
                   invalidText="invalid login"
                   onChange=onChangeLogin
                   onBlur=onBlurLogin
@@ -54,7 +55,7 @@ class SettingProfileForm extends Block {
                   text="${data.firstNameLabel}"
                   id="first_name"
                   name="${data.firstNameName}"
-                  value="Иван"
+                  value=first_name
                   invalidText="invalid first name"
                   onChange=onChangeName
                   onBlur=onBlurName
@@ -64,8 +65,17 @@ class SettingProfileForm extends Block {
                   text="${data.secondNameLabel}"
                   id="second_name"
                   name="${data.secondNameName}"
-                  value="Иванов"
+                  value=second_name
                   invalidText="invalid second name"
+                  onChange=onChangeName
+          }}}
+
+          {{{ProfInput
+                  text="${data.displayNameLabel}"
+                  id="display_name"
+                  name="${data.displayNameName}"
+                  value=display_name
+                  invalidText="invalid display name"
                   onChange=onChangeName
           }}}
 
@@ -73,7 +83,7 @@ class SettingProfileForm extends Block {
                   text="${data.phoneLabel}"
                   id="phone"
                   name="${data.phoneName}"
-                  value="+7(909)967-30-30"
+                  value=phone
                   invalidText="invalid phone"
                   onChange=onChangePhone
                   onBlur=onBlurPhone
@@ -89,4 +99,4 @@ class SettingProfileForm extends Block {
   }
 }
 
-export default SettingProfileForm;
+export default connect((state => ({ ...state.auth.profile })))(SettingProfileForm);

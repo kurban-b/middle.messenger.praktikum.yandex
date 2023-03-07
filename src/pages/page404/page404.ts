@@ -1,7 +1,18 @@
 import './styles.less';
 import Block from '../../utils/core/Block';
+import router from "../../utils/core/router";
+import {pages} from "../../utils/constants/route";
 
 class Page404 extends Block {
+  constructor(props: Record<string, unknown>) {
+    super({
+      onClick () {
+        router.go(pages.chat.href)
+      },
+      ...props
+    });
+  }
+
   render(): string {
     // language=hbs
     return `
@@ -19,7 +30,7 @@ class Page404 extends Block {
 
             {{{Spacing size="xxlarge"}}}
 
-            {{{Button label="Назад к чатам" view="link"}}}
+            {{{Button label="Назад к чатам" view="link" onClick=onClick}}}
         </main>
       </div>
     `;

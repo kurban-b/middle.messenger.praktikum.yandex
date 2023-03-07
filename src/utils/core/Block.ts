@@ -172,7 +172,7 @@ class Block {
     const element = this.getContent()
 
     if (element) {
-      element.style.display = 'none';
+      element.style.display = '';
     }
   }
 

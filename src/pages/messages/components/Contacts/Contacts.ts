@@ -1,17 +1,42 @@
 import './styles.less';
 import Block from '../../../../utils/core/Block';
+import store from "../../../../utils/store";
+import {Chats} from "../../../../utils/types/chats";
+import MessagesController from "../../../../controllers/MessagesController";
+import ChatsController from "../../../../controllers/ChatsController";
 
-interface IContacts {}
+interface IContacts {
+  id: number
+  chat?: Chats
+  time?: string
+  activeChatId?: number
+}
 
 class Contacts extends Block {
   constructor(props: IContacts) {
-    super({ ...props });
+    super({
+      ...props,
+      events: {
+        click: async () => {
+          await ChatsController.getChatsTokens(props.id)
+
+          const token = store.getState().chat?.token
+
+          if (token) {
+            await MessagesController.connect(props.id, token)
+          }
+
+          store.set('chat.activeChatId', props.id)
+        }
+      }
+    });
   }
 
   render(): string {
+    const time = this.props.time ? `${new Date(this.props.time).getHours()}:${new Date(this.props.time).getMinutes()}` : ''
     // language=hbs
     return `
-        <div class="contact__group">
+        <div class="contact__group ${store.getState().chat?.activeChatId === this.props.id ? 'contact__group_active' : ''}">
             <div class="contact_group__wrapper">
                 <div class="contact__avatar">
                     {{{Avatar size="large"}}}
@@ -29,7 +54,7 @@ class Contacts extends Block {
 
                 <div class="contact__right">
                     <div class="contact__right_time">
-                        {{time}}
+                        ${time}
                     </div>
 
                     <div class="contact__right_count">
@@ -42,7 +67,6 @@ class Contacts extends Block {
                 </div>
             </div>
         </div>
-
     `;
   }
 }

@@ -3,9 +3,14 @@
 .contact__group {
   padding: 0 10px;
   cursor: pointer;
+  height: 76px;
 }
 
 .contact__group:hover {
+  background-color: @color_bluealeez;
+}
+
+.contact__group_active {
   background-color: @color_bluealeez;
 }
 
@@ -36,6 +41,11 @@
   font-size: 12px;
   line-height: 15px;
   color: @color_shadow;
+  overflow: hidden;
+  height: 32px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .contact__right {

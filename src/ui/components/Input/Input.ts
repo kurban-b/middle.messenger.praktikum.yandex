@@ -13,6 +13,7 @@ interface IInputProps {
   onChange?: (e: InputEvent) => void
   onBlur?: (e: InputEvent) => void
   onFocus?: (e: InputEvent) => void
+  accept: string
 }
 
 class Input extends Block {
@@ -41,6 +42,7 @@ class Input extends Block {
                 ${this.props.pattern ? `pattern=${this.props.pattern}` : ''}
                 ${this.props.required ? 'required' : ''}
                 ${this.props.disabled ? 'disabled' : ''}
+                ${this.props.accept ? `accept=${this.props.accept}` : ''}
         />
     `;
   }

@@ -27,7 +27,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="oldPassword"
                     name="${data.oldPasswordName}"
-                    value="888999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -38,7 +38,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="newPassword"
                     name="${data.passwordName}"
-                    value="999999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -49,7 +49,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="newPasswordRepeat"
                     name="${data.repeatPasswordName}"
-                    value="999999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -59,6 +59,14 @@ class SettingPasswordForm extends Block {
 
             <div class="profile_submit">
                 {{{Button label="Сохранить" block="block" type="submit"}}}
+            </div>
+
+            {{{Spacing size="xlarge"}}}
+
+            <div class="form-change-password__error">
+                {{#if error}}
+                    {{error}}
+                {{/if}}
             </div>
         </form>
     `
