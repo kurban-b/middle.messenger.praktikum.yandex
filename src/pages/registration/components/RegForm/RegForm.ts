@@ -1,8 +1,8 @@
-import Block from "../../../../utils/core/Block";
-import data from "./data";
-import {onSubmit} from "./helpers";
-import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
-import {EPatterns} from "../../../../utils/helpers/validator";
+import Block from '../../../../utils/core/Block';
+import data from './data';
+import { onSubmit } from './helpers';
+import { decoratorHandler, onChangeInvalidClass } from '../../../../utils/helpers';
+import { EPatterns } from '../../../../utils/helpers/validator';
 
 interface IRegForm {}
 
@@ -21,13 +21,13 @@ class RegForm extends Block {
       onBlurName: decoratorHandler(EPatterns.name),
       onBlurPhone: decoratorHandler(EPatterns.phone),
       events: {
-        submit: onSubmit
-      }
+        submit: onSubmit,
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <form id="form-reg">
             {{{TextField
@@ -118,7 +118,7 @@ class RegForm extends Block {
                     type="submit"
             }}}
         </form>
-    `
+    `;
   }
 }
 

@@ -1,4 +1,5 @@
-import {isClassListHas} from "../../../../utils/helpers";
+import { isClassListHas } from '../../../../utils/helpers';
+import AuthController from '../../../../controllers/AuthController';
 
 interface IFormElements extends HTMLFormControlsCollection {
   login: HTMLInputElement
@@ -15,8 +16,8 @@ export const onSubmit = (e: SubmitEvent) => {
 
   if (isHasInvalid) return;
 
-  console.log({
+  AuthController.signin({
     login: elements.login.value,
-    password: elements.login.value
-  })
-}
+    password: elements.password.value,
+  });
+};

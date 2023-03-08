@@ -15,19 +15,19 @@ class Navigation extends Block {
                 </li>
 
                 <li>
-                    <a href="/registration">
+                    <a href="/sign-up">
                         Регистрация
                     </a>
                 </li>
 
                 <li class="navigation__list_item">
-                    <a href="/chat">
+                    <a href="/messenger">
                         Чат
                     </a>
                 </li>
 
                 <li>
-                    <a href="/profile">
+                    <a href="/settings">
                         Профиль
                     </a>
                 </li>

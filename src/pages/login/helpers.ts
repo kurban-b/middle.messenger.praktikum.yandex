@@ -1,6 +1,6 @@
-import { handleLocation } from '../../utils/core';
 import { pages } from '../../utils/constants/route';
+import router from '../../utils/core/router';
 
 export const onClickReg = (): void => {
-  handleLocation(pages.reg.href);
+  router.go(pages.reg.href);
 };

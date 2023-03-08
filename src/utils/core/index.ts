@@ -10,18 +10,16 @@ import ProfAvatar from '../../pages/profile/components/ProfAvatar';
 import ProfInput from '../../pages/profile/components/ProfInput';
 import Navigation from '../../ui/components/Navigation';
 import { registerComponent } from './registerComponent';
-import LoginPage from '../../pages/login';
 import RegistrationPage from '../../pages/registration/registration';
-import Block from './Block';
-import Page404 from '../../pages/page404';
-import MessagesPage from '../../pages/messages';
-import Profile from '../../pages/profile';
-import { pages } from '../constants/route';
 import Input from '../../ui/components/Input';
-import LoginForm from "../../pages/login/components/LoginForm";
-import RegForm from "../../pages/registration/components/RegForm";
-import SettingProfileForm from "../../pages/profile/components/SettingProfileForm";
-import SettingPasswordForm from "../../pages/profile/components/SettingPasswordForm";
+import LoginForm from '../../pages/login/components/LoginForm';
+import RegForm from '../../pages/registration/components/RegForm';
+import SettingProfileForm from '../../pages/profile/components/SettingProfileForm';
+import SettingPasswordForm from '../../pages/profile/components/SettingPasswordForm';
+import Router from './router';
+import Dialog from '../../ui/components/Dialog';
+import DialogForm from '../../ui/components/DialogForm';
+import Search from '../../pages/messages/components/Search';
 
 //* * Регистрирует компоненты при помощи хендлеров в hbs */
 export const handlebarsRegisterComponents = () => {
@@ -42,29 +40,12 @@ export const handlebarsRegisterComponents = () => {
   registerComponent(RegForm, 'RegForm');
   registerComponent(SettingProfileForm, 'SettingProfileForm');
   registerComponent(SettingPasswordForm, 'SettingPasswordForm');
-};
-
-//* * Временная функция для примитивного роутинга */
-export const initRouter = (): Block => {
-  switch (window.location.pathname) {
-    case pages.login.href:
-      return new LoginPage({});
-
-    case pages.reg.href:
-      return new RegistrationPage({});
-
-    case pages.chat.href:
-      return new MessagesPage({});
-
-    case pages.profile.href:
-      return new Profile({});
-
-    default:
-      return new Page404();
-  }
+  registerComponent(Dialog, 'Dialog');
+  registerComponent(DialogForm, 'DialogForm');
+  registerComponent(Search, 'Search');
 };
 
 //* * обработчик для перехода на другую страницу */
 export const handleLocation = (href: string) => {
-  window.location.pathname = href;
+  Router.go(href);
 };

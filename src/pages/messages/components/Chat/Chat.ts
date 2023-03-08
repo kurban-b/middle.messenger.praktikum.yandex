@@ -1,28 +1,53 @@
 import './styles.less';
-import data from './data';
-import Icon from './assets/icon__menu-bar.svg';
 import Block from '../../../../utils/core/Block';
+import connect from '../../../../utils/store/connect';
+import { onAddUser, onRemoveUser } from './helpers';
+import store from '../../../../utils/store';
+import { Store } from '../../../../utils/types/store';
+import isEqual from '../../../../utils/helpers/isEqual';
+import { User } from '../../../../utils/types/auth';
 
 interface IChat {
-  name: string
-  messages: {
-    type: string
-    text?: string
-    image?: string
-    date: string
-    isOutgoing: boolean
-  }[]
-  icon: string
+  messages: Store['messages']
+  activeChatId: number
+  profile: User
 }
 
 class Chat extends Block {
   constructor(props: IChat) {
+    const list = (() => {
+      if (props.messages && props.activeChatId) {
+        if (props.messages.hasOwnProperty(props.activeChatId)) return props.messages[props.activeChatId];
+        return [];
+      }
+      return [];
+    })();
+
     super({
       ...props,
-      name: props.name || 'Иванов Иван',
-      messages: props.messages ||  data.messages,
-      icon: props.icon || Icon,
+      addUserDialog: false,
+      messages: list,
+      removeUserDialog: false,
+      onClickAddUser: () => {
+        store.set('users.error', undefined);
+        this.setProps({ ...props, removeUserDialog: false, addUserDialog: true });
+      },
+      onClickRemoveUser: () => {
+        store.set('users.error', undefined);
+        this.setProps({ ...props, addUserDialog: false, removeUserDialog: true });
+      },
+      onAddUser,
+      onRemoveUser,
     });
+  }
+
+  componentDidUpdate(_oldProps: IChat, _newProps: IChat): boolean {
+    if (!isEqual(_oldProps, _newProps)) {
+      this.setProps({ ..._newProps });
+
+      return true;
+    }
+    return super.componentDidUpdate(_oldProps, _newProps);
   }
 
   render() {
@@ -34,12 +59,10 @@ class Chat extends Block {
                     {{{Avatar size="small"}}}
                 </div>
 
-                <div class="chat_top__name">
-                    {{name}}
-                </div>
-
                 <div class="chat_top__menu">
-                    <img class="icon" src="{{icon}}" alt="" />
+                    {{{Button size="small" label="Добавить участника" view="link" onClick=onClickAddUser}}}
+
+                    {{{Button size="small" label="Удалить участника" view="link" onClick=onClickRemoveUser}}}
                 </div>
             </div>
 
@@ -51,11 +74,9 @@ class Chat extends Block {
                 <ul class="chat_messages__list">
                     {{#each messages}}
                         {{{Message
-                                image=image
-                                type=type
-                                text=text
-                                date=date
-                                isOutgoing=isOutgoing
+                                text=content
+                                time=time
+                                userId=user_id
                         }}}
                     {{/each}}
                 </ul>
@@ -64,9 +85,30 @@ class Chat extends Block {
             <div class="chat__bottom">
                 {{{InputBar}}}
             </div>
+
+            {{{Dialog
+                    title="Добавить пользователя"
+                    id="addUser"
+                    open=addUserDialog
+                    buttonText="Добавить"
+                    onSubmit=onAddUser
+                    error=dialogError
+            }}}
+
+            {{{Dialog
+                    title="Удалить пользователя"
+                    id="removeUser"
+                    open=removeUserDialog
+                    buttonText="Удалить"
+                    onSubmit=onRemoveUser
+                    error=dialogError
+            }}}
         </div>
     `;
   }
 }
 
-export default Chat;
+export default connect((state) => ({
+  dialogError: state?.users?.error,
+  profile: state?.auth?.profile,
+}))(Chat);

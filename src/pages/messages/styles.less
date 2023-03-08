@@ -5,11 +5,20 @@
   height: 100%;
   width: 100%;
 
+  .choose__chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: @color_black40;
+  }
+
   .messages__contacts {
     width: 310px;
     height: 100%;
     background-color: @color_graylight;
     border-right: 1px solid #eaeaea;
+    position: relative;
   }
 
   .messages__chat {
@@ -56,5 +65,13 @@
 
   .search__input::placeholder {
     text-align: center;
+  }
+
+  .chat__btn__add {
+    padding: 0 16px;
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
   }
 }

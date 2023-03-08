@@ -1,8 +1,8 @@
-import Block from "../../../../utils/core/Block";
-import data from "./data";
-import {onSubmit} from "./helpers";
-import {EPatterns} from "../../../../utils/helpers/validator";
-import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
+import Block from '../../../../utils/core/Block';
+import data from './data';
+import { onSubmit } from './helpers';
+import { EPatterns } from '../../../../utils/helpers/validator';
+import { decoratorHandler, onChangeInvalidClass } from '../../../../utils/helpers';
 
 interface ILoginForm {}
 
@@ -16,12 +16,12 @@ class LoginForm extends Block {
       onChangePassword: onChangeInvalidClass(EPatterns.password),
       events: {
         submit: onSubmit,
-      }
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <form id="form-login">
             {{{TextField
@@ -52,7 +52,7 @@ class LoginForm extends Block {
 
             {{{Button label="${data.authText}" block="block" type="submit"}}}
         </form>
-    `
+    `;
   }
 }
 

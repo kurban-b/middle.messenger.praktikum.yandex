@@ -1,8 +1,8 @@
-import Block from "../../../../utils/core/Block";
-import data from "../../data";
-import {onSubmit} from "./helpers";
-import {decoratorHandler, onChangeInvalidClass} from "../../../../utils/helpers";
-import {EPatterns} from "../../../../utils/helpers/validator";
+import Block from '../../../../utils/core/Block';
+import data from '../../data';
+import { onSubmit } from './helpers';
+import { decoratorHandler, onChangeInvalidClass } from '../../../../utils/helpers';
+import { EPatterns } from '../../../../utils/helpers/validator';
 
 interface ISettingPasswordForm {}
 
@@ -13,13 +13,13 @@ class SettingPasswordForm extends Block {
       onChangePassword: onChangeInvalidClass(EPatterns.password),
       onBlurPassword: decoratorHandler(EPatterns.password),
       events: {
-        submit: onSubmit
-      }
+        submit: onSubmit,
+      },
     });
   }
 
   render(): string {
-    //language=hbs
+    // language=hbs
     return `
         <form id="form-change-password">
             {{{ProfInput
@@ -27,7 +27,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="oldPassword"
                     name="${data.oldPasswordName}"
-                    value="888999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -38,7 +38,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="newPassword"
                     name="${data.passwordName}"
-                    value="999999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -49,7 +49,7 @@ class SettingPasswordForm extends Block {
                     type="password"
                     id="newPasswordRepeat"
                     name="${data.repeatPasswordName}"
-                    value="999999"
+                    value=""
                     invalidText="invalid password"
                     onChange=onChangePassword
                     onBlur=onBlurPassword
@@ -60,8 +60,16 @@ class SettingPasswordForm extends Block {
             <div class="profile_submit">
                 {{{Button label="Сохранить" block="block" type="submit"}}}
             </div>
+
+            {{{Spacing size="xlarge"}}}
+
+            <div class="form-change-password__error">
+                {{#if error}}
+                    {{error}}
+                {{/if}}
+            </div>
         </form>
-    `
+    `;
   }
 }
 
