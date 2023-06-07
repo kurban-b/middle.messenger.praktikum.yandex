@@ -10,6 +10,7 @@ class MessagesController {
       return;
     }
 
+    // @ts-ignore
     const userId = store.getState().auth?.profile.id;
 
     const wsTransport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`);
@@ -50,7 +51,7 @@ class MessagesController {
   }
 
   private onMessage(id: number, messages: Message | Message[]) {
-    let messagesToAdd: IMessage[] = [];
+    let messagesToAdd: Message[] = [];
 
     if (Array.isArray(messages)) {
       messagesToAdd = messages.reverse();
@@ -58,6 +59,7 @@ class MessagesController {
       messagesToAdd.push(messages);
     }
 
+    // @ts-ignore
     const currentMessages = (store.getState().messages || {})[id] || [];
 
     messagesToAdd = [...currentMessages, ...messagesToAdd];

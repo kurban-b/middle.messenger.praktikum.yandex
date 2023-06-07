@@ -16,9 +16,7 @@ class Block {
   public id = makeUUID();
 
   private _element: HTMLElement | null = null;
-
-  private _meta: { id: any, props: any } | null = null;
-
+  
   protected props: Props;
 
   protected children: Record<string, Block>;
@@ -33,14 +31,10 @@ class Block {
   constructor(propsAndChildren: any = {}) {
     const eventBus = new EventBus();
 
-    const { children, props } = this._getChildren(propsAndChildren);
+    const {children, props} = this._getChildren(propsAndChildren);
 
     this.children = children;
 
-    this._meta = {
-      id: this.id,
-      props,
-    };
 
     this.props = this._makePropsProxy(props);
 

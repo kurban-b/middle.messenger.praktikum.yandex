@@ -20,6 +20,7 @@ class Contacts extends Block {
         click: async () => {
           await ChatsController.getChatsTokens(props.id);
 
+          // @ts-ignore
           const token = store.getState().chat?.token;
 
           if (token) {
@@ -34,9 +35,11 @@ class Contacts extends Block {
 
   render(): string {
     const time = this.props.time ? `${new Date(this.props.time).getHours()}:${new Date(this.props.time).getMinutes()}` : '';
+    // @ts-ignore
+    const activeChatId = store.getState().chat?.activeChatId
     // language=hbs
     return `
-        <div class="contact__group ${store.getState().chat?.activeChatId === this.props.id ? 'contact__group_active' : ''}">
+        <div class="contact__group ${activeChatId === this.props.id ? 'contact__group_active' : ''}">
             <div class="contact_group__wrapper">
                 <div class="contact__avatar">
                     {{{Avatar size="large"}}}

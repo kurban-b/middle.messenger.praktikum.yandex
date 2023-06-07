@@ -1,8 +1,8 @@
 import { EventBus } from '../core/eventBus';
 import set from '../helpers/set';
-import { Store } from '../types/store';
+import { Store as IStore } from '../types/store';
 
-interface Indexed extends Store {
+interface Indexed extends IStore {
   [key: string]: unknown
 }
 

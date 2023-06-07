@@ -16,7 +16,9 @@ export const onAddUser = async (e: SubmitEvent): Promise<void> => {
   store.set('users.error', undefined);
   await UsersController.searchUser({ login: input.value });
 
+  // @ts-ignore
   const users = state?.users?.list as User[];
+  // @ts-ignore
   const activeChatId = state?.chat?.activeChatId as number;
 
   const newUsers = users.filter(({ login }) => login === input.value).map(({ id }) => id);
@@ -37,7 +39,9 @@ export const onRemoveUser = async (e: SubmitEvent): Promise<void> => {
   store.set('users.error', undefined);
   await UsersController.searchUser({ login: input.value });
 
+  // @ts-ignore
   const users = state?.users?.list as User[];
+  // @ts-ignore
   const activeChatId = state?.chat?.activeChatId as number;
 
   const newUsers = users.filter(({ login }) => login === input.value).map(({ id }) => id);
