@@ -9,14 +9,20 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'chat.bundle.js'
+    filename: 'bundle.[hash].js',
   },
   resolve: {
-    extensions: [".ts", ".js", ".hbs"],
+    modules: [path.resolve(__dirname, 'node_modules')],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".hbs", "..."],
     alias: {
       'express-handlebars': 'handlebars/dist/handlebars.js',
       'ejs': 'ejs.min.js'
     }
+  },
+  resolveLoader: {
+    modules: [
+      path.join(__dirname, 'node_modules')
+    ]
   },
   devServer: {
     static: {
@@ -59,25 +65,21 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff(2)?|ttf|eot|png|jpe?g|gif)$/i,
-        type: "asset/inline",
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "fonts",
-            },
-          },
-        ],
+        test: /\.(svg|png|jpg|gif)$/,
+        use: ['file-loader?name=./images/template/[name].[ext]'],
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars-loader"
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        use: [
+          {
+            loader: 'handlebars-loader',
+            options: {
+              helperDirs: [
+                path.resolve(__dirname, 'src/utils/helpers/hbs-helper'),
+              ],
+            },
+          },
+        ],
       }
     ]
   },
