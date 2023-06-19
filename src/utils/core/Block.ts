@@ -17,7 +17,7 @@ class Block {
 
   private _element: HTMLElement | null = null;
 
-  protected props: Props;
+  props: Props;
 
   protected children: Record<string, Block>;
 
