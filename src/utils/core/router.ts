@@ -50,6 +50,11 @@ class Router {
     this._onRoute(window.location.pathname);
   }
 
+  public reset() {
+    this.routes = [];
+    this._currentRoute = null;
+  }
+
   _onRoute(pathname: TPathname) {
     const route = this.getRoute(pathname);
 
