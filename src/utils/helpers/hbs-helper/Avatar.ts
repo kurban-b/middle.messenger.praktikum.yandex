@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/Avatar";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/Avatar';
 
-export default function Avatar ({ hash, data }: HelperOptions) {
+export default function Avatar({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

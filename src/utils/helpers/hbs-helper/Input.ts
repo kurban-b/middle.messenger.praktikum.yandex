@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/Input";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/Input';
 
-export default function Input ({ hash, data }: HelperOptions) {
+export default function Input({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

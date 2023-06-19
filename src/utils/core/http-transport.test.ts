@@ -32,8 +32,8 @@ describe('HTTPTransport', () => {
     expect(request.method).to.eq(EMethods.GET);
   });
 
-  it("post() should send POST request", () => {
-    instance.post("/signup");
+  it('post() should send POST request', () => {
+    instance.post('/signup');
 
     const [request] = requests;
 

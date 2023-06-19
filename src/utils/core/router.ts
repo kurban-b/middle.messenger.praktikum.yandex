@@ -1,7 +1,7 @@
 import Block from './Block';
 import queryStringify from '../helpers/queryString';
 import { queryStringToObject } from '../helpers/queryStringToObject';
-import Route from "./route";
+import Route from './route';
 
 type TPathname = string
 

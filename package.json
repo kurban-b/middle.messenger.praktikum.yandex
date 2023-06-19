@@ -37,7 +37,6 @@
     "babel-loader": "9.1.2",
     "browserify-zlib": "0.2.0",
     "buffer": "6.0.3",
-    "chai": "4.3.7",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
     "crypto-browserify": "3.12.0",
@@ -83,7 +82,8 @@
     "handlebars": "4.7.7",
     "jsdom": "22.1.0",
     "sinon": "15.1.2",
-    "uuid": "9.0.0"
+    "uuid": "9.0.0",
+    "chai": "4.3.7"
   },
   "browser": {
     "[module-name]": false

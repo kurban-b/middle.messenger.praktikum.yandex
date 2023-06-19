@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/messages/components/Chat";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/messages/components/Chat';
 
-export default function Button ({ hash, data }: HelperOptions) {
+export default function Button({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

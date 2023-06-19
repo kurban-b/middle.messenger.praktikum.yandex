@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/Navigation";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/Navigation';
 
-export default function Navigation ({ hash, data }: HelperOptions) {
+export default function Navigation({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/profile/components/SettingProfileForm";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/profile/components/SettingProfileForm';
 
-export default function SettingProfileForm ({ hash, data }: HelperOptions) {
+export default function SettingProfileForm({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

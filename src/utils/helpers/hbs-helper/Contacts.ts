@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/messages/components/Contacts";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/messages/components/Contacts';
 
-export default function Contacts ({ hash, data }: HelperOptions) {
+export default function Contacts({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

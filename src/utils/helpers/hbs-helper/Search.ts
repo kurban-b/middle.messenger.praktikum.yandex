@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/messages/components/Search";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/messages/components/Search';
 
-export default function Search ({ hash, data }: HelperOptions) {
+export default function Search({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

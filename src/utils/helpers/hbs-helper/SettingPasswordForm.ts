@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/profile/components/SettingPasswordForm";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/profile/components/SettingPasswordForm';
 
-export default function SettingPasswordForm ({ hash, data }: HelperOptions) {
+export default function SettingPasswordForm({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

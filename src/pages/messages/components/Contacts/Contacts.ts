@@ -36,7 +36,7 @@ class Contacts extends Block {
   render(): string {
     const time = this.props.time ? `${new Date(this.props.time).getHours()}:${new Date(this.props.time).getMinutes()}` : '';
     // @ts-ignore
-    const activeChatId = store.getState().chat?.activeChatId
+    const activeChatId = store.getState().chat?.activeChatId;
     // language=hbs
     return `
         <div class="contact__group ${activeChatId === this.props.id ? 'contact__group_active' : ''}">

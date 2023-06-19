@@ -15,7 +15,7 @@ export default class Validator {
 
   private name = /^[A-Za-zА-ЯЁа-яё-]+$/i;
 
-  private phone = /^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/gm;
+  private phone = /^\+?[78][-\\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/gm;
 
   test(str: string, patternName: keyof typeof EPatterns): boolean {
     return this[patternName]?.test(str);

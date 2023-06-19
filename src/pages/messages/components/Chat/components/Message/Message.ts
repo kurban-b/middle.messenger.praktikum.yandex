@@ -50,6 +50,4 @@ class Message extends Block {
   }
 }
 
-export default connect((state) => {
-  return { profileId: state.auth?.profile.id }
-})(Message);
+export default connect((state) => ({ profileId: state.auth?.profile.id }))(Message);

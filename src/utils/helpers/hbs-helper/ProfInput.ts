@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/profile/components/ProfInput";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/profile/components/ProfInput';
 
-export default function ProfInput ({ hash, data }: HelperOptions) {
+export default function ProfInput({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

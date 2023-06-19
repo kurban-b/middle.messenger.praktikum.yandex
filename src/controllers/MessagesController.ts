@@ -17,10 +17,12 @@ class MessagesController {
 
     this.sockets.set(id, wsTransport);
 
-    await wsTransport.connect().then(() => {
+    await wsTransport.connect().then((data) => {
       this.subscribe(wsTransport, id);
       this.fetchOldMessages(id);
-    })
+
+      return data;
+    });
   }
 
   sendMessage(id: number, message: string) {

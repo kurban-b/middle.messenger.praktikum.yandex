@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/profile/components/ProfAvatar";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/profile/components/ProfAvatar';
 
-export default function ProfAvatar ({ hash, data }: HelperOptions) {
+export default function ProfAvatar({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

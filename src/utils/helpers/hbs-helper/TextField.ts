@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/TextField";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/TextField';
 
-export default function TextField ({ hash, data }: HelperOptions) {
+export default function TextField({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/Button";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/Button';
 
-export default function Spacing ({ hash, data }: HelperOptions) {
+export default function Spacing({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

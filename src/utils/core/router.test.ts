@@ -1,7 +1,7 @@
-import Router from './router';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import Block from "./Block";
+import Router from './router';
+import Block from './Block';
 
 describe('Router', () => {
   const originalForward = window.history.forward;

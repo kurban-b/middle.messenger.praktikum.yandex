@@ -20,7 +20,7 @@ function connect(mapStateToProps: (state: any, block?: typeof Block) => any) {
           if (!isEqual(state, newState)) {
             this.setProps({ ...newState });
           }
-          
+
           // не забываем сохранить новое состояние
           state = newState;
         });

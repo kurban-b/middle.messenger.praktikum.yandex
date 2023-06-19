@@ -6,8 +6,8 @@ import ProfilePage from './pages/profile';
 import LoginPage from './pages/login';
 import Block from './utils/core/Block';
 import AuthController from './controllers/AuthController';
-import './ui/styles/global.less'
-import {handlebarsRegisterComponents} from "./utils/core";
+import './ui/styles/global.less';
+import { handlebarsRegisterComponents } from './utils/core';
 
 document.addEventListener('DOMContentLoaded', async () => {
   handlebarsRegisterComponents();

@@ -6,7 +6,7 @@ class Component extends Block {
     // language=hbs
     return `
         <div>{{mockedProp}}</div>
-    `
+    `;
   }
 }
 

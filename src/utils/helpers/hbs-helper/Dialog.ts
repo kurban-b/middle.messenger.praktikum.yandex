@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../ui/components/Dialog";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../ui/components/Dialog';
 
-export default function Dialog ({ hash, data }: HelperOptions) {
+export default function Dialog({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

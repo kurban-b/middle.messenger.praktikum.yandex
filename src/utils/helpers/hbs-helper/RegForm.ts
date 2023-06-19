@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/registration/components/RegForm";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/registration/components/RegForm';
 
-export default function RegForm ({ hash, data }: HelperOptions) {
+export default function RegForm({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

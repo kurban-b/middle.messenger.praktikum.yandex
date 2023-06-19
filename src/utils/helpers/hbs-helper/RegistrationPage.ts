@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/registration/registration";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/registration/registration';
 
-export default function RegistrationPage ({ hash, data }: HelperOptions) {
+export default function RegistrationPage({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

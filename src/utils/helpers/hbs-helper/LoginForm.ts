@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/login/components/LoginForm";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/login/components/LoginForm';
 
-export default function LoginForm ({ hash, data }: HelperOptions) {
+export default function LoginForm({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }

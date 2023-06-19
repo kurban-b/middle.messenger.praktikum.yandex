@@ -1,7 +1,7 @@
-import {HelperOptions} from "handlebars";
-import Component from "../../../pages/messages/components/Chat/components/InputBar";
+import { HelperOptions } from 'handlebars';
+import Component from '../../../pages/messages/components/Chat/components/InputBar';
 
-export default function InputBar ({ hash, data }: HelperOptions) {
+export default function InputBar({ hash, data }: HelperOptions) {
   if (!data.root.children) {
     data.root.children = {};
   }
