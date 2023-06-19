@@ -36,13 +36,13 @@ describe('Router', () => {
     expect(getContentFake.callCount).to.eq(1);
   });
 
-  it('method forward()', () => {
+  it('forward()', () => {
     Router.forward();
 
     expect((window.history.forward as any).callCount).to.eq(1);
   });
 
-  it('method back()', () => {
+  it('back()', () => {
     Router.back();
 
     expect((window.history.back as any).callCount).to.eq(1);
