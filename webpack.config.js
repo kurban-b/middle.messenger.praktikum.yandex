@@ -16,7 +16,8 @@ module.exports = {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".hbs", "..."],
     alias: {
       'express-handlebars': 'handlebars/dist/handlebars.js',
-      'ejs': 'ejs.min.js'
+      'ejs': 'ejs.min.js',
+      'handlebars': 'handlebars/dist/handlebars.js'
     }
   },
   resolveLoader: {
