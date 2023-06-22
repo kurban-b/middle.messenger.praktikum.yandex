@@ -1,5 +1,4 @@
 import './styles.less';
-import data from './data';
 import Block from '../../utils/core/Block';
 import { pages } from '../../utils/constants/route';
 import router from '../../utils/core/router';
@@ -27,7 +26,7 @@ class RegistrationPage extends Block {
 
             <main class="auth-page__box">
                 <h1>
-                    ${data.title}
+                    Регистрация
                 </h1>
 
                 {{{RegForm}}}
@@ -35,7 +34,7 @@ class RegistrationPage extends Block {
                 {{{Spacing size="xxsmall"}}}
 
                 {{{Button
-                        label="${data.authText}"
+                        label="Войти"
                         block="block"
                         view="link"
                         onClick=onClickAuth

@@ -17,9 +17,7 @@ class Block {
 
   private _element: HTMLElement | null = null;
 
-  private _meta: { id: any, props: any } | null = null;
-
-  protected props: Props;
+  props: Props;
 
   protected children: Record<string, Block>;
 
@@ -36,11 +34,6 @@ class Block {
     const { children, props } = this._getChildren(propsAndChildren);
 
     this.children = children;
-
-    this._meta = {
-      id: this.id,
-      props,
-    };
 
     this.props = this._makePropsProxy(props);
 

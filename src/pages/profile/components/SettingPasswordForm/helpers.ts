@@ -25,6 +25,7 @@ export const onSubmit = (e: SubmitEvent): void => {
   if (isHasInvalid) return;
 
   const callback = async () => {
+    // @ts-ignore
     const error = state?.auth?.error;
 
     await usersController.updatePassword({

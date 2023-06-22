@@ -1,5 +1,5 @@
-import Block from "./Block";
-import render from '../../utils/core/renderDOM';
+import Block from './Block';
+import render from './renderDOM';
 
 const isEqual = (a: string, b: string): boolean => a === b;
 
@@ -40,6 +40,7 @@ class Route {
 
   render() {
     if (!this._block) {
+      // @ts-ignore
       this._block = new this._blockClass({});
       render(this._props.rootQuery, this._block);
       return;
@@ -49,4 +50,4 @@ class Route {
   }
 }
 
-export default Route
+export default Route;

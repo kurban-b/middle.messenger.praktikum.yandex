@@ -22,7 +22,7 @@ class ChatsController {
   public async createChat(data: { title: string }) {
     try {
       const res = await this.api.create(data);
-      const state = store.getState() as {chat: { chats: Chats[]}};
+      const state = store.getState() as unknown as {chat: { chats: Chats[]}};
       const { chats } = state.chat;
       const newChats = [...chats, res];
 

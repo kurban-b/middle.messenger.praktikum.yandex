@@ -15,7 +15,9 @@ export default function render(query: string, block: Block | null) {
   if (element) {
     root.appendChild(element);
 
-    block.dispatchComponentDidMount();
+    if (block.dispatchComponentDidMount) {
+      block.dispatchComponentDidMount();
+    }
   } else {
     console.error('Block.getContent() into render return null');
   }
